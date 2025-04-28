@@ -15,6 +15,7 @@ default ngobrol_r101 = 0
 default ngobrol_r106 = 0
 default ngobrol_r109 = 0
 default places_discovered = {
+    depanTC = False
     gedung1 = False
     gedung2 = False
     kantin = False
@@ -136,6 +137,18 @@ label prologue:
     mc "Hmmm... tapi kalo yang lolos dengan nilai segitu, berarti pasti banyak juga yang ingin masuk ke jurusan ini di ITS."
 
     mc "Kalo gitu aku harus lebih giat belajar lagi biar keinginanku bisa kecapai."
+
+    mc "Baiklah aku fix akan daftar ke Informatika ITS sebagai pilihan 1"
+
+    mc "Kemudian... lokasi SNBT di ITS juga lah biar peluang sukses makin gede"
+
+    "Padahal itu mitos saja agar peserta yang ingin masuk ke kampusnya jadi lebih semangat."
+
+    "Setelah mendaftarkan diri ternyata aku ditempatkan untuk mengerjakan SNBT di LP2 gedung Informatika"
+
+    mc "Woaah tes nya di gedung Informatika juga ternyata cuy"
+
+    mc "Harus survey lokasi sih ini biar makin positif untuk bisa lolos."
 
     "Satu bulan telah berlalu, aku tidak pernah berhenti untuk belajar dan mencoba semua try out SNBT yang
     dapat aku temukan."
