@@ -7,6 +7,7 @@ define mc = Character("[McName]")
 define unk = Character("???")
 
 default eksplor = 0
+default inspectedBundaran = 0
 default ngobrolBundaran = 0
 default ngobrolKantin = 0
 default ngobrolMasjid = 0
@@ -14,6 +15,7 @@ default ngobrolLp2 = 0
 default ngobrol_r101 = 0
 default ngobrol_r106 = 0
 default ngobrol_r109 = 0
+default visited_bundaran = 0
 default places_discovered = {
     depanTC = False
     gedung1 = False
@@ -258,19 +260,94 @@ label prologue:
 
         mc "Akan kumanfaatkan sebaik-baiknya kesempatan ini"
 
+        "Aku pun bergegas memesan ojek online untuk segera pergi ke ITS"
+
+        "Untuk tujuan pertamaku, aku ingin mencoba lihat bundaran ITS yang terkenal dengan air mancurnya itu."
+
         jump diBundaranITS
 
     else:
         #block of code to run
 
-        mc "Malas le"
+        mc "Ya, lebih baik mempelajari materi yang aku masih belum sepenuhnya paham"
+
+        mc "Karena waktu belajar ku sudah tinggal hari ini saja."
+
+        "Aku pun memutuskan untuk belajar sepenuhnya di hari ini"
 
         jump hariUTBK
 
     #return
 
 label diBundaranITS:
-    "Ini di bundaran"
+
+    if visited_bundaran == 0:
+
+        $ visited_bundaran = 1
+
+        "Sesampainya di bundaran ITS, aku tidak lupa untuk memberi tip ke driver yang barusan mengantarku"
+
+        "Anggap saja ini merupakan satu dari banyak \"jimat\" yang aku beli untuk meningkatkan peluang lolos ku."
+
+        mc "Terima kasih pak!"
+
+        "Setelah driver itu pergi, aku mulai melihat-lihat sekelilingku"
+
+        mc "Hmm jadi ini bundaran ITS."
+
+        "Kemudian dari jauh, nampak ada cewek yang lagi foto-foto gedung-gedung ITS dari sini"
+
+        "Kira-kira apakah dia juga sedang survey lokasi atau hanya sekedar melihat saja?"
+
+    menu:
+        "Apa yang harus aku lakukan di sini?"
+        "Ajak Ngobrol":
+            jump ngobrol_di_bundaran
+        "Inspek":
+            jump inspekBundaran
+        "Pergi Ke Teknik Informatika":
+            mc "Jika aku pergi ke Informatika, mungkin aku tidak akan bisa kembali lagi ke sini"
+
+            menu:
+                "Yakin pergi ke gedung informatika sekarang?"
+                "Ya":
+                    mc "Baiklah aku akan ke gedung Informatika sekarang"
+
+                    mc "Maksudku... lebih cepat lebih baik kan?"
+
+                    "Aku mencoba melihat lokasi gedung Informatika melalui peta di ponselku"
+
+                    "Ternyata jauh juga."
+
+                    "Akhirnya aku memutuskan untuk pesan ojek online lagi"
+
+                    jump diDepanTC
+
+                "Nanti dulu":
+                    mc "Hmmm... nanti dulu deh, masih ada yang pengen kulihat di sini"
+
+                    jump diBundaranITS
+
+    return
+
+label inspekBundaran:
+    if inspectedBundaran == 0:
+        $ inspectedBundaran += 1
+
+        "Aku melihat sekelilingku"
+
+        "Yang pertama kali menarik perhatianku adalah tulisan Institut Teknologi Sepuluh Nopember yang 
+        ada di pinggir sepanjang jalan bundaran"
+
+        jump diBundaranITS
+
+label ngobrol_di_bundaran:
+    "Lagi ngobrol di bundaran"
+
+    jump diBundaranITS
+
+label diDepanTC:
+    "INi di depan tc"
 
     return
 
