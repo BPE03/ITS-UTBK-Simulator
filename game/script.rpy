@@ -17,24 +17,24 @@ default ngobrol_r106 = 0
 default ngobrol_r109 = 0
 default visited_bundaran = 0
 default places_discovered = {
-    depanTC = False
-    gedung1 = False
-    gedung2 = False
-    kantin = False
-    r101 = False
-    r106 = False
-    r109 = False
-    lt2 = False
-    lt3 = False
-    lp2 = False
-    masjid = False
-    parkiran = False
-    aula = False
-    tu = False
-    lt2_closed = False
+    "depanTC": False,
+    "gedung1": False,
+    "gedung2": False,
+    "kantin": False,
+    "r101": False,
+    "r106": False,
+    "r109": False,
+    "lt2": False,
+    "lt3": False,
+    "lp2": False,
+    "masjid": False,
+    "parkiran": False,
+    "aula": False,
+    "tu": False,
+    "lt2_closed": False,
 }
 init python:
-    def discovered_all_places:
+    def discovered_all_places():
         return all(places_discovered.values())
 
 # The game starts here.
