@@ -6,22 +6,33 @@
 define mc = Character("[McName]")
 define unk = Character("???")
 
-$ eksplor = 0
-
-$ visited_gedung1 = 0
-$ visited_gedung2 = 0
-$ visited_kantin = 0
-$ visited_r101 = 0
-$ visited_r106 = 0
-$ visited_r109 = 0
-$ visited_lt2 = 0
-$ visited_lt3 = 0
-$ visited_lp2 = 0
-$ visited_masjid = 0
-$ visited_parkiran = 0
-$ visited_aula = 0
-$ visited_TU = 0
-$ visited_lt2_closed = 0
+default eksplor = 0
+default ngobrolBundaran = 0
+default ngobrolKantin = 0
+default ngobrolMasjid = 0
+default ngobrolLp2 = 0
+default ngobrol_r101 = 0
+default ngobrol_r106 = 0
+default ngobrol_r109 = 0
+default places_discovered = {
+    gedung1 = False
+    gedung2 = False
+    kantin = False
+    r101 = False
+    r106 = False
+    r109 = False
+    lt2 = False
+    lt3 = False
+    lp2 = False
+    masjid = False
+    parkiran = False
+    aula = False
+    tu = False
+    lt2_closed = False
+}
+init python:
+    def discovered_all_places:
+        return all(places_discovered.values())
 
 # The game starts here.
 
@@ -191,7 +202,7 @@ label prologue:
                             unk "Tolong hargai usaha developer :("
 
                             menu:
-                                "Tolong hargais usaha developer :("
+                                "Tolong hargai usaha developer :("
                                 "Aku mau menghargai usaha developer":
                                     
                                     $ eksplor = 1

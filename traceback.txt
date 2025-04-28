@@ -1,24 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 37, in script
-    unk "[McName] ya, Salam kenal. Namaku adalah &%^E*%$*$%$^&*%$#"
-ValueError: unsupported format character '^' (0x5e) at index 42
+  File "game/script.rpy", line 229, in script
+    if eksplor == 1:
+  File "game/script.rpy", line 229, in <module>
+    if eksplor == 1:
+NameError: name 'eksplor' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 37, in script
-    unk "[McName] ya, Salam kenal. Namaku adalah &%^E*%$*$%$^&*%$#"
-  File "F:\renpy-8.3.7-sdk\renpy\ast.py", line 2586, in execute
-    Say.execute(self)
-  File "F:\renpy-8.3.7-sdk\renpy\ast.py", line 623, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "F:\renpy-8.3.7-sdk\renpy\exports\sayexports.py", line 121, in say
-    what = what % tag_quoting_dict
-ValueError: unsupported format character '^' (0x5e) at index 42
+  File "game/script.rpy", line 229, in script
+    if eksplor == 1:
+  File "F:\renpy-8.3.7-sdk\renpy\ast.py", line 1856, in execute
+    if renpy.python.py_eval(condition):
+  File "F:\renpy-8.3.7-sdk\renpy\python.py", line 1218, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "F:\renpy-8.3.7-sdk\renpy\python.py", line 1211, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 229, in <module>
+    if eksplor == 1:
+NameError: name 'eksplor' is not defined
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.3.7.25031702
 ITS UTBK Simulator 1.0
-Mon Apr 28 10:38:16 2025
+Mon Apr 28 11:58:12 2025
