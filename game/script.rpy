@@ -486,7 +486,137 @@ label ngobrol_di_bundaran:
 
         mc "BTW Cynthia, persiapan SNBT mu gimana aman ga?"
 
-        nbun ""
+        nbun "Alhamdulillah liat hasil Try-Out ku yang selalu di atas passing grade, aku optimis sih
+        bisa lolos. Kalo kamu gimana?"
+
+        mc "Yaa.... aku udah nyoba pelajarin hasil try out ku yang hasilnya kayak uang koin itu....
+        ya semoga beruntung aja sih, biasanya kurang bisa mikir cepat aku walaupun udah paham soalnya"
+
+        nbun "uang koin berapa mas? 100? 200?"
+
+        "Buset dia ketawa lagi."
+
+        "Jadi malu aku, hasil TO nya dia dah aman banget, lah aku hasil pas pasan gini malah sok ngasih
+        kata kata motivasi"
+
+        mc "Kalo nilaiku segitu udah aku buang jauh jauh sih koin sama harapanku"
+
+        nbun "ahaha bercanda aja mas, omong-omong soal mana mas yang kesulitan? barangkali bisa aku bantu"
+
+        mc "hmm di semua subtes pasti ada soal yang aku mikirnya lama, nilai subtesmu yang paling bagus
+        di mana Cyn?"
+
+        nbun "kalo aku paling bagus di Pengetahuan Kuantitatif ya, tapi terkadang aku juga ngga sepenuhnya
+        semua kukerjain. Kalo waktunya mepet banget aku langsung nembak B."
+
+        "Pengetahuan Kuantitatif....."
+
+        "Ya, nih anak jenius"
+
+        mc "buset pengetahuan kuantitatif tertinggi? keren sih kamu Cyn"
+
+        nbun "Hehe aku emang suka banget sama matematika dari SMP, semenjak itu aku selalu coba-coba soal yang
+        menurutku menantang, dengan gitu lama kelamaan kecepatan ngitungku jadi cepet juga"
+
+        mc "Hmmmm i see... makasih buat tipsnya yak"
+
+        nbun "Sama-sama mas"
+
+    elif ngobrolBundaran == 2:
+        $ ngobrolBundaran += 1
+
+        mc "Btw kalo misal kamu ga lolos SNBT gimana Cyn?"
+
+        nbun "Loh kok tanya gitu, katanya tadi harus yakin?"
+
+        mc "Bener yakin itu penting, tapi tetep aja ngga menutupi worst casenya juga kan, karena
+        aku juga bingung kalo ngga lolos nanti harus gimana lagi"
+
+        mc "Mandiri? darimana duitnya, gap year? ya mungkin pilihan terbaikku buat belajar lebih banyak lagi"
+
+        nbun "mmmm...."
+
+        nbun "Belum kepikiran sih mas, karena daripada mikirin gimana kalo ga lolos, mending mikirin gimana
+        supaya lolos"
+
+        nbun "Kan masnya sendiri yang bilang tadi harus yakin, kalo yakin lolos ngapain mikirin worst case?
+        mikirin itu yang ada nambah beban pikiran juga mas"
+
+        "Seketika aku merenung sedikit"
+
+        "Iya juga ya"
+
+        "Ngapain aku mikirin worst case?"
+
+        "Kalo aku emang yakin lolos"
+
+        "Seharusnya aku ngga perlu mikirin itu"
+
+        mc "Iya juga ya haha, makasih motivasinya yak"
+
+        nbun "Okeyy~"
+
+    elif ngobrolBundaran == 3:
+        $ ngobrolBundaran += 1
+
+        mc "Btw kalo udah lolos ITS nanti rencananya mau ngapain aja?"
+
+        nbun "Belum tau sih mas, yang pasti aku pengen nyoba ikut riset kalo ada, 
+        atau pengen nyoba teoriku yang lagi aku kembangin yaitu bikin alat untuk ngobatin kanker"
+
+        "...."
+
+        "Kalo aku bilang dia jenius kayaknya masih kurang deh"
+
+        mc "Kamu udah bikin penelitian sendiri?"
+
+        nbun "Iya, tapi karena ngga ada fasilitasnya jadi aku ngga bisa nyoba, makanya aku pengen banget
+        buat lolos ke jurusan ini"
+
+        "Ya aku hanya berharap kamu tidak ada di pesawat aja"
+
+        mc "Aku ngga tau sih mau ngomong apa lagi"
+
+        mc "Rasanya apapun rencana yang mau aku ceritain kaya ngga ada apa apanya haha"
+
+        nbun "Gapapa mas cerita aja, ngga adil dong kan aku udah cerita masa kamu ngga"
+
+        mc "Waduh oke deh, jadi rencanaku setelah masuk ke Informatika itu ya pengen nyoba bikin game gitu"
+
+        nbun "Oh masnya suka main game kah?"
+
+        mc "Iya karena aku suka main game, aku jadi mikir kok bisa ya orang orang bikin game kayak gini. 
+        Apalagi ada 1 game yang bener bener bikin perspektif ku ke game itu berbeda banget"
+
+        mc "Dulu waktu aku kecil aku selalu dimarahin orang tuaku dengan alasan NGEGAME TEROSS, kuakui
+        mungkin mereka ada benarnya karena dulu aku bermain game karena hanya sekedar bersenang senang aja"
+
+        mc "Dan dulu aku sering sekali bermain game yang punya elemen kompetitif, waktuku jadi terbuang sia-sia
+        hanya untuk mencari validasi dengan pamer rank yang tinggi, sudah tidak menyenangkan, waktuku juga hilang
+        begitu saja."
+
+        mc "Tapi sekarang? game yang aku mainkan selalu tipe game yang Single Player dengan story dan karakter
+        yang bagus. Game game tersebut lebih menyenangkan dan edukatif daripada game yang tujuannya untuk naik
+        rank"
+
+        mc "Dari situlah aku benar benar paham apa yang membuat orang orang selalu menyalahkan game ketika anaknya
+        malas belajar"
+
+        mc "Mereka memainkan game yang salah."
+
+        mc "Game yang seharusnya menyenangkan, mereka malah bekerja di game itu"
+
+        mc "Aku tidak tahu kenapa game seperti itu bisa lebih populer dari game yang santai dan menyenangkan"
+
+        mc "Maka dari itulah aku ingin membuat game yang bisa diakses untuk semua umur, menyenangkan,
+        dan pastinya mengedukasi mereka."
+
+        nbun "Jujur aku ngga tau apa apa tentang game mas, tapi apapun rencana masnya semoga bisa kecapai ya"
+
+        mc "Kamu juga Cyn."
+
+    else:
+        mc "Aku tidak tau topik apalagi yang ingin kubicarakan"
 
     jump diBundaranITS
 
