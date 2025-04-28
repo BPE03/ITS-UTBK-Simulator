@@ -1,0 +1,24 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 37, in script
+    unk "[McName] ya, Salam kenal. Namaku adalah &%^E*%$*$%$^&*%$#"
+ValueError: unsupported format character '^' (0x5e) at index 42
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 37, in script
+    unk "[McName] ya, Salam kenal. Namaku adalah &%^E*%$*$%$^&*%$#"
+  File "F:\renpy-8.3.7-sdk\renpy\ast.py", line 2586, in execute
+    Say.execute(self)
+  File "F:\renpy-8.3.7-sdk\renpy\ast.py", line 623, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "F:\renpy-8.3.7-sdk\renpy\exports\sayexports.py", line 121, in say
+    what = what % tag_quoting_dict
+ValueError: unsupported format character '^' (0x5e) at index 42
+
+Windows-10-10.0.19045 AMD64
+Ren'Py 8.3.7.25031702
+ITS UTBK Simulator 1.0
+Mon Apr 28 10:38:16 2025
