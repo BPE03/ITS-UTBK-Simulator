@@ -480,7 +480,7 @@ label ngobrol_di_bundaran:
 
         nbun "Salam kenal juga"
 
-    elif ngobrolBundaran == 1
+    elif ngobrolBundaran == 1:
 
         $ ngobrolBundaran += 1
 
