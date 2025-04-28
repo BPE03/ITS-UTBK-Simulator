@@ -5,6 +5,13 @@
 
 define mc = Character("[McName]")
 define unk = Character("???")
+define nbun = Character("Cynthia")
+define nr101 = Character("Farah")
+define nr105 = Character("Andi")
+define nr109 = Character("Billy")
+define nlp2 = Character("Elisa")
+define nkantin = Character("Danan")
+define nmasjid = Character("Gilang")
 
 default eksplor = 0
 default inspectedBundaran = 0
@@ -45,7 +52,7 @@ label start:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
-    scene bg room
+    scene black
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -281,9 +288,14 @@ label prologue:
 
 label diBundaranITS:
 
+    scene bundaran_ITS
+    with fade
+
     if visited_bundaran == 0:
 
         $ visited_bundaran = 1
+
+        $ renpy.pause(2.0, hard=True)
 
         "Sesampainya di bundaran ITS, aku tidak lupa untuk memberi tip ke driver yang barusan mengantarku"
 
@@ -339,10 +351,142 @@ label inspekBundaran:
         "Yang pertama kali menarik perhatianku adalah tulisan Institut Teknologi Sepuluh Nopember yang 
         ada di pinggir sepanjang jalan bundaran"
 
-        jump diBundaranITS
+        mc "Seumur hidupku lewat jalan ga pernah ada tulisan almamater segede ini"
+
+        mc "tempatnya di bundaran juga, otomatis pasti banyak orang yang lihat"
+
+        mc "kalo aku bisa lolos ke kampus ini, jelas akan aku pamerkan almamaterku"
+
+    elif inspectedBundaran == 1:
+        $ inspectedBundaran += 1
+
+        "Aku melihat-lihat sekelilingku lagi"
+
+        "Aku melihati kendaraan-kendaraan yang melewati bundaran"
+
+        "Kemudian pandanganku terpaling ke pilar pilar yang ada di awal dan di akhir bundaran"
+
+        "Di atasnya ada tulisan Institut Teknologi Sepuluh Nopember"
+
+        mc "Saat browsing kampus tadi aku bingung kenapa banyak banget orang-orang yang pada pengen kuliah di sini"
+
+        mc "Sekarang aku tau"
+
+        mc "Kampus ini mewah banget buat level kampus negeri"
+
+    elif inspectedBundaran == 2:
+        $ inspectedBundaran += 1
+
+        "Aku melihat-lihat sekelilingku"
+
+        "Di tengah bundaran seperti ada tanda dilarang menginjak rumput"
+
+        "Hmmm"
+
+        mc "Oh iya tujuanku ke sini kan pengen liat air mancurnya"
+
+        mc "Hmmm aku lupa browsing lagi kalo pagi nyala apa ga"
+
+        "Sesaat setelah aku mengatakan itu"
+
+        "Tiba-tiba..."
+
+        scene air_mancur_bundaran
+        with fade
+
+        $ renpy.pause(2.0, hard=True)
+
+        mc "Woaah..."
+
+        "Air mancur yang kukira tidak menyala di pagi hari..."
+
+        "Sekarang menyembur di mata ku"
+
+        mc "Wohh gilak keren banget sih ini"
+
+        mc "Aku foto ah"
+
+        "Aku pun bergegas memfotonya sebelum air mancurnya berhenti lagi"
+
+        mc "Mantap cuy fotonya, langsung jadiin story sih ini"
+
+        "Tidak berselang lama, air mancur itu berhenti menyemburkan airnya"
+
+        mc "Oh airnya udah ngga mancur lagi"
+
+        mc "Walaupun bentar tapi liatnya udah puas"
+
+        mc "Kalo bisa sih aku bakal ke sini lagi waktu malam, pasti lebih keren lagi waktu ada lampunya"
+
+    else:
+        "Aku melihat-lihat sekelilingku...."
+
+        "Kurasa aku sudah melihat semua yang ada di sini"
+
+    jump diBundaranITS
 
 label ngobrol_di_bundaran:
-    "Lagi ngobrol di bundaran"
+
+    if ngobrolBundaran == 0:
+        $ ngobrolBundaran += 1
+
+        "Aku memutuskan untuk mengajak ngobrol cewek itu"
+
+        "Siapa tau kalau dia ingin kuliah di ITS juga"
+
+        mc "Kampusnya keren ya mbak?"
+
+        unk "...."
+
+        "Ah ga dijawab lagi, apa aku salah mulainya ya?"
+
+        mc "halo mbak?"
+
+        unk "Eh iya mas, ada apa ya?"
+
+        mc "Oh ngga tadi aku liat mbaknya lagi foto-foto kampusnya tadi, pengen kuliah di sini kah mbak?"
+
+        unk "Iya mas, sekalian survey lokasi SNBT juga"
+
+        mc "Loh sama nih, aku juga pengen kuliah di ITS juga, SNBT nya juga ngerjain di ITS. ngomong ngomong
+        mau masuk jurusan mana mbak?"
+
+        unk "Aku pengennya masuk Teknologi Kedokteran sih pilihan pertamanya, ya tapi kalo ngga dapet
+        pilihan kedua ku di Teknik Kimia. Kalo masnya ambil jurusan apa?"
+
+        mc "Aku sih ngambil Teknik Informatika di pilihan pertamanya, pilihan keduanya jujur ngga tau haha,
+        tapi yang mirip mirip sih di Sistem Informasi jadi itu pilihan kedua ku."
+
+        unk "Wihh kerenn..... yakin lolos mas? itu keduanya passing-gradenya tinggi banget loh"
+
+        mc "Harus yakin dong, kalo ga yakin gimana bisa lolos kalo mentalnya down duluan? dari SD sampe SMA
+        aku selalu percaya diri meskipun masih ada materi yang belum aku bener bener pahami."
+
+        mc "Kalo udah yakin, mentalnya tenang, pasti waktu ngerjain juga bakal dateng dengan sendiri ilmunya"
+
+        "Aku ngomong begitu dengan pedenya"
+
+        "Padahal mah aku selalu beruntung aja bisa dapet nilai sesuai ekspektasi"
+
+        "Emang aku bisa lolos di jurusan dengan peminat terbanyak hanya ngandelin beruntung doang?"
+
+        unk "Wih bener banget sih itu, semoga lolos ya mas"
+
+        mc "Amiin kamu juga ya. BTW boleh kenalan ga?"
+
+        nbun "Boleh mas, kenalin aku Cynthia"
+
+        mc "Cynthia... kenalin aku [McName]. Salam kenal ya"
+
+        nbun "Salam kenal juga"
+
+    elif ngobrolBundaran == 1
+
+        $ ngobrolBundaran += 1
+
+        mc "BTW Cynthia, persiapan SNBT mu gimana aman ga?"
+
+        nbun ""
 
     jump diBundaranITS
 

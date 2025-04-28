@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 21: invalid syntax
-        "gedung1": False\
-         ^
+File "game/script.rpy", line 483: reached end of line when expecting ':'.
+    elif ngobrolBundaran == 1
+                             ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Mon Apr 28 19:45:46 2025
+Mon Apr 28 21:42:50 2025
