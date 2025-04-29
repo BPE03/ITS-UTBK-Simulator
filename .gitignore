@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ren'Py build directories
+/game/cache/
+/game/saves/
+game/cache/
+game/saves/
+build/
+tmp/
+
+# Log files
+*.log
+log.txt
+errors.txt
+traceback.txt
+
+# Ren'Py persistent data
+persistent
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Compiled scripts
+*.rpyc
+*.rpa
+
+# Compiled translations
+*.rpy.mo
+
+# Editor/IDE settings (optional, depending on what you use)
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
