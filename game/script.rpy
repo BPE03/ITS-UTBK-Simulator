@@ -648,8 +648,58 @@ label ngobrol_di_bundaran:
     jump diBundaranITS
 
 label diDepanTC:
-    "INi di depan tc"
+    scene tc_depan
+    with fade
+    mc "Woah..."
+    mc "Ternyata ini departemen Teknik Informatika itu..."
+    mc "Oke... Aku akan mulai eksplorasi supaya nanti pas hari H ga bingung..."
+    scene gedung depan
+    mc "Wahh keren banget gedungnya, megah dan gede banget..."
+    menu:
+        "Selanjutnya kemana ya?"
+        "Lurus" :
+            mc "Ak nyoba lurus aja, semoga ga nyasar"
+            jump diDepanTC
+        "Kiri" :
+            mc "Kayaknya aku mau ke kiri deh, soalnya ada jalan"
+            scene kantin
+            mc "Oh ini kantinnya TC... deket sih jadi nanti kalo laper tinggal mampir kesini"
 
+
+label lantai1:
+    scene lantai1
+    with fade
+    mc "Wah bagus juga ya dalemnya"
+    menu:
+        "Kemana lagi ya?"
+        "Kiri":
+            mc "Kayaknya aku mau ke kiri deh, soalnya ada jalan"
+            jump kiri_lt1
+        "Kanan":
+            mc "Oke aku coba ke kanan!"
+            jump kanan_lt1
+        "Naik tangga":
+            mc "Kayaknya aku mau naik tangga deh, soalnya ada jalan"
+            jump lantai2
+            
+
+label kiri_lt1:
+    scene kiri_lt1
+    mc "Banyak juga ya kelasnya"
+    scene lapangan
+    mc "Waaah ada lapangan juga, cocok nih buat main-main setelah selesai kelas"
+    jump lantai1
+
+label kanan_lt1:
+    scene kanan_lt1
+    mc "Eh didepan ada apa tuh? coba kesana ah!"
+    scene musholla 
+    mc "oh ini musholla, enak ya bisa deket musholla jadi gampang kalau mau sholat"
+    jump lantai1
+
+label lantai2:
+    scene lantai2
+    mc "Walah ini ya lantai 2 nya"
     return
 
 label hariUTBK:
