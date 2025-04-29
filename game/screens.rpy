@@ -291,22 +291,23 @@ screen navigation():
 
         xpos gui.navigation_xpos
         yalign 0.5
+        
 
         spacing gui.navigation_spacing
 
         if main_menu:
 
-            textbutton _("Start") action Start()
+            textbutton _("Mulai") action Start()
 
         else:
 
-            textbutton _("History") action ShowMenu("history")
+            textbutton _("Riwayat") action ShowMenu("history")
 
-            textbutton _("Save") action ShowMenu("save")
+            textbutton _("Simpan") action ShowMenu("save")
 
-        textbutton _("Load") action ShowMenu("load")
+        textbutton _("Muat") action ShowMenu("load")
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+        textbutton _("Preferensi") action ShowMenu("preferences")
 
         if _in_replay:
 
@@ -316,18 +317,18 @@ screen navigation():
 
             textbutton _("Main Menu") action MainMenu()
 
-        textbutton _("About") action ShowMenu("about")
+        textbutton _("Tentang") action ShowMenu("about")
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
             ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
+            textbutton _("Bantuan") action ShowMenu("help")
 
         if renpy.variant("pc"):
 
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
+            textbutton _("Keluar") action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -339,6 +340,7 @@ style navigation_button:
 
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
+    xalign 1.0
 
 
 ## Main Menu screen ############################################################
@@ -366,12 +368,14 @@ screen main_menu():
 
         vbox:
             style "main_menu_vbox"
-
-            text "[config.name!t]":
+            text "ITS UTBK SIMULATOR":
                 style "main_menu_title"
 
-            text "[config.version]":
-                style "main_menu_version"
+            # text "[config.name!t]":
+            #     style "main_menu_title"
+
+            # text "[config.version]":
+            #     style "main_menu_version"
 
 
 style main_menu_frame is empty
@@ -383,24 +387,27 @@ style main_menu_version is main_menu_text
 style main_menu_frame:
     xsize 420
     yfill True
-
-    background "gui/overlay/main_menu.png"
+    # background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
-    xalign 1.0
+    xalign 0.5
     xoffset -30
     xmaximum 1200
-    yalign 1.0
-    yoffset -30
+    yalign 0.5
+    ypos 150
+    
 
 style main_menu_text:
-    properties gui.text_properties("main_menu", accent=True)
+    font "fonts/Fredoka-Bold.ttf"
+    size 100
+    # properties gui.text_properties("main_menu", accent=True)
+    xalign 0.5
 
 style main_menu_title:
     properties gui.text_properties("title")
 
-style main_menu_version:
-    properties gui.text_properties("version")
+# style main_menu_version:
+#     properties gui.text_properties("version")
 
 
 ## Game Menu screen ############################################################
@@ -507,7 +514,7 @@ style game_menu_navigation_frame:
     yfill True
 
 style game_menu_content_frame:
-    left_margin 60
+    left_margin 0
     right_margin 30
     top_margin 15
 
