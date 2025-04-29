@@ -20,6 +20,8 @@ define satpam = Character("Satpam")
 
 default eksplor = 0
 default inspectedBundaran = 0
+default inspectedGedung1 = 0
+default inspectedGedung2 = 0
 default ngobrolBundaran = 0
 default ngobrolKantin = 0
 default ngobrolMasjid = 0
@@ -888,9 +890,78 @@ label diGedung1:
             jump diDepanTC
     return
 
-# Unfinished
 label inspekGedung1:
-    "Inspek"
+    if inspectedGedung1 == 0:
+        $ inspectedGedung1 += 1
+        "Aku melihat-lihat di sekelilingku..."
+
+        "Ya pandanganku masih tidak bisa berpaling dari baliho tersebut"
+
+        "Mari kita lihat..."
+
+        "Tim Barunastra ITS mendapatkan gelar juara dunia pada International Roboboat Competition 2025"
+
+        "...."
+
+        "Dunia??"
+
+        "Juara dunia???"
+
+        "Lebih unggul dari kampus luar negeri seperti MIT?"
+
+        "Ternyata aku tidak sedang menginjakkan kaki ke kampus negeri"
+
+        "Aku menginjakkan kakiku ke kampus luar negeri dalam negeri"
+
+        "Maksudku tidak banyak di negara ini yang dapat menyaingi negara luar"
+    elif inspectedGedung1 == 1:
+        $ inspectedGedung1 += 1
+
+        "Aku melihat sekelilingku lagi"
+
+        scene depan_toilet
+
+        mc "Oh toiletnya di sebelah sini ternyata"
+
+        "Aku mencoba masuk ke toiletnya..."
+
+        scene wastafel
+
+        "Yap standar"
+
+        scene toilet
+
+        "Kemudian terlihat model WC duduk dari toilet yang terbuka"
+
+        "Jujur aku lebih suka model WC jongkok"
+
+        "Rasanya bisa keluar lebih banyak dan lebih puas daripada WC duduk"
+
+        "Hmm...?"
+
+        "Satu pintu toillet yang tertutup itu tiba-tiba terbuka"
+
+        "Orang itu langsung datang ke arahku"
+
+        show bapak bapak tu
+
+        bpk "Mas ini toilet khusus dosen, toilet khusus mahasiswa di sebelah sana"
+
+        mc "Oh iya maaf pak saya nggak tau"
+
+        "Aku bergegas keluar dari toilet"
+
+        scene gedung1
+        with fade
+
+        "Hufft..."
+
+        "Untung saja tidak terjadi apa-apa"
+
+        "Ya mungkin aku harus lebih berhati-hati lagi sebelum memasuki suatu ruangan."
+
+    elif inspectedGedung1 > 1:
+        "Nampaknya sudah tidak ada hal baru yang bisa kulihat"
     jump diGedung1
 
 label r109:
@@ -1136,9 +1207,53 @@ label mau_ke_lt2:
         "Jika aku ingin naik ke lantai 2, aku harus mencari tangga yang lain."
     jump diGedung2
 
-#unfinished
 label inspekGedung2:
-    "Inspek gedung 2"
+    if inspectedGedung2 == 0:
+        $ inspectedGedung2 += 1
+        "Aku melihat-lihat di sekelilingku..."
+
+        "Di sini ada baliho ucapan selamat ke mahasiswa berprestasi"
+
+        "Mari kita lihat..."
+
+        "ITS berhasil meraih total delapan medali dalam kompetisi Gemastik XVII 2024"
+
+        "...."
+
+        "Wow"
+
+        "Delapan medali? dari berapa lomba yang ada?"
+
+        "Yang kutahu adalah gemastik itu adalah ajang di tingkat Nasional"
+
+        mc "Berapa dari mahasiswa berprestasi yang kuliah di sini?"
+
+        "Aku pasti bisa menjadi seperti mereka"
+    elif inspectedGedung2 == 1:
+        $ inspectedGedung2 += 1
+
+        "Aku melihat sekelilingku lagi"
+
+        scene depan_toilet
+
+        mc "Oh toiletnya di sebelah sini ternyata"
+
+        "Aku mencoba masuk ke toiletnya..."
+
+        scene wastafel
+
+        "Yap standar"
+
+        scene toilet
+
+        "Kemudian terlihat model WC duduk dari toilet yang terbuka"
+
+        "Jujur aku lebih suka model WC jongkok"
+
+        "Rasanya bisa keluar lebih banyak dan lebih puas daripada WC duduk"
+
+    elif inspectedGedung2 > 1:
+        "Nampaknya sudah tidak ada hal baru yang bisa kulihat"
 
     jump diGedung2
 
