@@ -13,6 +13,7 @@ define nlp2 = Character("Elisa")
 define nkantin = Character("Danan")
 define nmasjid = Character("Gilang")
 define audio.c1 = "<loop 21.44>audio/Sun_Rays.wav"
+define satpam = Character("Satpam")
 
 default eksplor = 0
 default inspectedBundaran = 0
@@ -849,6 +850,68 @@ label diParkiran:
 
 # Unfinished
 label hariUTBK:
-    "Ini hari utbk"
+    scene black
+    "Kring....."
+    "Alarm berbunyi nyaring..."
+    scene kamar with fade
+    mc "woahh... hari ini hari-H UTBK..."
+    mc "Untung kemarin aku udah survey jadi udah tau lokasinya"
+    menu:
+        "Bangun dan siap-siap":
+            jump bangun
+        "Tidur lagi bentar...":
+            mc "Hmm... tidur lagi bentar ah"
+            mc "5 menit lagi bangun deh"
+            jump bangun
 
-    return
+label bangun:
+    scene kamar with fade
+    mc "Akhirnya bangun juga..."
+    mc "Sekarang saatnya siap-siap"
+    mc "Semoga hari ini berjalan lancar..."
+    "Kamu bergegas mandi dan mengenakan pakaian yang nyaman."
+    "Sarapan kilat sudah menanti di meja."
+    "Setelah selesai, kamu meraih tas berisi dokumen dan alat tulis."
+
+label tiba_tc:
+    scene tc_depan
+    with fade
+    mc "Wahh udah sampe di TC"
+    mc "Sekarang saatnya ngerjain UTBK"
+    mc "Semoga hasilnya memuaskan ya"
+    "Kamu melangkah masuk ke dalam gedung dengan penuh semangat."
+    "Terlihat banyak calon peserta UTBK lain yang juga baru tiba."
+    "Kamu pun langsung menuju ruang ujian yang sudah ditentukan."
+
+    scene depan_ruang with fade
+    mc "Wahh udah sampe di ruang ujian"
+    show satpam at left
+    "Di depan pintu ruangan, seorang satpam berdiri tegap."
+    satpam "Selamat pagi, silakan tunjukkan kartu peserta dan kartu identitas Anda."
+    mc "Selamat pagi, Pak. Ini kartu saya."
+    "Kamu menyerahkan kedua kartu kepada satpam."
+    satpam "Terima kasih. Sekarang, mohon buka tas Anda, kami akan melakukan pemeriksaan barang bawaan."
+    menu:
+        "Membuka tas dan menunjukkan isinya dengan tenang.":
+            mc "Tentu, Pak. Ini isinya."
+            "Kamu membuka tas, memperlihatkan alat tulis, botol air minum transparan, dan dokumen-dokumen penting."
+            satpam "Baik, tidak ada barang yang mencurigakan. Silakan."
+            jump masuk_ruangan
+        "Sedikit panik tapi tetap mengikuti arahan.":
+            mc "(Aduh, jangan sampai ada yang ketinggalan atau salah...)"
+            "Dengan sedikit gemetar, kamu membuka tas dan menunjukkan isinya."
+            satpam "Semua sesuai. Silakan masuk."
+            jump masuk_ruangan
+        "Berusaha menyembunyikan sesuatu (Mungkin ide buruk?).":
+            mc "(Jangan sampai ketahuan kalau aku bawa...)"
+            "Kamu mencoba sedikit menggeser sesuatu di dalam tas agar tidak terlihat."
+            satpam "Maaf, mohon perlihatkan semua isi tas Anda dengan jelas."
+            "Kamu terpaksa menunjukkan semuanya."
+            # Di sini bisa ada konsekuensi jika MC mencoba menyembunyikan barang terlarang
+            jump masuk_ruangan # Untuk sementara kita langsung masuk ruangan
+
+    label masuk_ruangan:
+        scene lp2 with fade
+        "Kamu memasuki ruangan ujian."
+        "Suasana terasa tegang namun penuh harapan."
+        mc "Akhirnya... saatnya mengerjakan."
