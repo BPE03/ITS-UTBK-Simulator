@@ -37,6 +37,7 @@ default places_discovered = {
     "lt2": False,
     "lt3": False,
     "lp2": False,
+    "giga": False,
     "masjid": False,
     "parkiran": False,
     "aula": False,
@@ -795,23 +796,37 @@ label inspekKantin:
 
 # Unfinished
 label diGedung1:
+    scene gedung1
+    with fade
     if not places_discovered["gedung1"]:
         $ places_discovered["gedung1"] = True
     menu:
         "Apa yang harus aku lakukan di sini?"
-        "Maju Kiri":
+        "Maju Kiri" if not places_discovered["r109"]:
             "Aku maju ke lorong kiri..."
             jump r109
 
-        "Maju Kanan":
+        "Ke Lorong Ruang 109-113" if places_discovered["r109"]:
+            "Aku maju ke lorong kiri..."
+            jump r109
+
+        "Maju Kanan" if not places_discovered["r106"]:
             "Aku maju ke lorong kanan..."
+            jump r106
+
+        "Ke Lorong Ruang 106-108" if places_discovered["r106"]:
+            "Aku maju ke lorong kiri..."
             jump r106
 
         "Naik Tangga":
             scene tangga1
-            "Aku menaiki Tangga"
+            "Aku menaiki Tangga..."
+
+            jump lt2
+
         "Inspek":
             jump inspekGedung1
+
         "Keluar":
             jump diDepanTC
     return
@@ -820,6 +835,148 @@ label diGedung1:
 label inspekGedung1:
     "Inspek"
     jump diGedung1
+
+label r109:
+    scene r109
+    with fade
+    if not places_discovered["r109"]:
+        $ places_discovered["r109"] = True
+
+        "Nampaknya seperti lorong biasa yang berisikan kelas-kelas"
+
+        "Aku juga melihat ada anak yang sedang duduk di salah satu kursi di sini"
+
+        "Apakah dia salah satu mahasiswa atau anak yang lagi survey juga?"
+
+    menu:
+        "Apa yang harus aku lakukan di sini?"
+        "Ajak Ngobrol":
+            jump ngobrol_di_r109
+
+        "Inspek":
+            jump inspekR109
+
+        "Maju terus" if visited_kantin_via_r109 == 0:
+            $ visited_kantin_via_r109 = 1
+
+            "Aku mencoba terus maju ke belakang gedung...."
+
+            scene kantin
+
+            "Ternyata jalan di belakang gedung ini bisa sebagai jalan pintas untuk ke kantin"
+
+            mc "Oww ada jalan pintas juga rupanya"
+
+            mc "Untung aja daripada aku harus mutar jauh cuma untuk ke kantin"
+
+            mc "Bisa-bisa meninggal duluan aku"
+
+            jump diKantin
+
+        "Ke Kantin" if visited_kantin_via_r109 == 1:
+            "Aku pergi ke kantin..."
+            jump diKantin
+
+        "Ke Tempat Masuk Gedung Informatika":
+            "Aku berjalan ke arah timur..."
+            jump diGedung1        
+
+label inspekR109:
+    scene kiri_lt1
+    "Hanya lorong biasa yang berisikan ruang kelas dan ada lab untuk mahasiswa pascasarjana juga"
+
+    scene r109
+    "Di bagian utara dari sini ada beberapa tempat duduk serta meja untuk belajar"
+
+    scene lapangan
+    "Dan lebih keluar lagi ada lapangan untuk melakukan berbagai aktivitas olahraga"
+
+    scene panggung
+    "Kemudian di belakang lapangan itu ada panggung yang kemungkinan digunakan untuk acara-acara mahasiswa"
+
+    scene musholla
+    "Aku juga dapat melihat musholla di bagian barat laut yang dekat dengan bagian belakang dari gedung ini"
+
+    jump r109
+
+# Unfinished
+label ngobrol_di_r109:
+    "ngobrol"
+
+    jump r109
+
+label r106:
+    scene r106
+    with fade
+    if not places_discovered["r106"]:
+        $ places_discovered["r106"] = True
+
+        "Nampaknya seperti lorong biasa yang berisikan kelas-kelas"
+
+        "Aku juga melihat ada anak yang sedang duduk di salah satu kursi di sini"
+
+        "Apakah dia salah satu mahasiswa atau anak yang lagi survey juga?"
+
+    menu:
+        "Apa yang harus aku lakukan di sini?"
+        "Ajak Ngobrol":
+            jump ngobrol_di_r106
+        "Inspek":
+            jump inspekR106
+        "Maju" if not places_discovered["gedung2"]:
+            jump diGedung2
+        "Ke Gedung Informatika bagian Utara":
+            jump diGedung2
+        "Ke Gedung Informatika bagian Selatan":
+            jump diGedung1
+
+label ngobrol_di_r106:
+    "Ngobrol"
+
+    jump r106
+
+label inspekR106:
+    "Hanya lorong biasa yang berisikan ruang kelas"
+
+    "Di bagian barat dari sini ada beberapa tempat duduk serta meja untuk belajar"
+
+    scene plasa
+    "Lebih jauh ada semacam tempat belajar outdoor yang cukup luas"
+
+    scene lapangan
+    "Dan lebih keluar lagi ada lapangan untuk melakukan berbagai aktivitas olahraga"
+
+    scene panggung
+    "Kemudian di belakang lapangan itu ada panggung yang kemungkinan digunakan untuk acara-acara mahasiswa"
+
+    scene musholla
+    "Aku juga dapat melihat musholla di bagian barat laut yang dekat dengan bagian belakang dari gedung ini"
+
+    jump r109
+
+label diGedung2:
+    scene gedung2
+    with fade
+    if not places_discovered["gedung2"]:
+        $ places_discovered["gedung2"] = True
+
+label mau_ke_lt2:
+    scene tangga_dikunci
+    with fade
+    if not places_discovered["lt2_closed"]:
+        $ places_discovered["lt2_closed"] = True
+
+label r101:
+    scene r101
+    with fade
+    if not places_discovered["r101"]:
+        $ places_discovered["r101"] = True
+
+label masjid:
+    scene musholla dalam
+    with fade
+    if not places_discovered["masjid"]:
+        $ places_discovered["masjid"] = True
 
 label diParkiran:
     scene parkiran
@@ -843,10 +1000,42 @@ label diParkiran:
             jump r101
         "Kembali":
             jump diDepanTC
-        
-    return
 
+label lt2:
+    scene lt2
+    with fade
+    if not places_discovered["lt2"]:
+        $ places_discovered["lt2"] = True
 
+label keTU:
+    scene ruang_tu
+    with fade
+    if not places_discovered["tu"]:
+        $ places_discovered["tu"] = True
+
+label keAula:
+    scene ruang_aula
+    with fade
+    if not places_discovered["aula"]:
+        $ places_discovered["aula"] = True
+
+label lt3:
+    scene lt3
+    with fade
+    if not places_discovered["lt3"]:
+        $ places_discovered["lt3"] = True
+
+label labgiga:
+    scene lab_giga
+    with fade
+    if not places_discovered["giga"]:
+        $ places_discovered["giga"] = True
+
+label lp2:
+    scene lp2
+    with fade
+    if not places_discovered["lp2"]:
+        $ places_discovered["lp2"] = True
 
 # Unfinished
 label hariUTBK:
