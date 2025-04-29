@@ -24,6 +24,7 @@ default ngobrol_r101 = 0
 default ngobrol_r106 = 0
 default ngobrol_r109 = 0
 default visited_bundaran = 0
+default visited_kantin_via_r109 = 0
 default places_discovered = {
     "depanTC": False,
     "gedung1": False,
@@ -48,6 +49,8 @@ init python:
 # The game starts here.
 
 label start:
+
+    stop music
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
@@ -315,7 +318,7 @@ label prologue:
 
 label diBundaranITS:
 
-    scene bundaran_ITS
+    scene bundaran1
     with fade
 
     if visited_bundaran == 0:
@@ -359,6 +362,13 @@ label diBundaranITS:
                     "Ternyata jauh juga."
 
                     "Akhirnya aku memutuskan untuk pesan ojek online lagi"
+
+                    if ngobrolBundaran > 0:
+                        "Akupun tidak lupa untuk pamit ke Cynthia"
+
+                        mc "Eh Cyn aku pergi duluan yak, lokasi SNBT ku di Teknik Informatika soalnya"
+
+                        nbun "Okeeyy hati-hati ya!"
 
                     jump diDepanTC
 
@@ -648,10 +658,196 @@ label ngobrol_di_bundaran:
     jump diBundaranITS
 
 label diDepanTC:
-    "INi di depan tc"
+    scene depantc
+    with fade
+    if places_discovered["depanTC"] == False:
+        $ places_discovered["depanTC"] = True
+        "Sesampainya di depan gerbang Informatika, aku tidak lupa untuk memberi driverku tip"
+
+        "Hmmm...."
+
+        "Jadi ini gedung Informatika"
+
+        "Baiklah mungkin selanjutnya aku mau eksplorasi semua yang ada di gedung ini"
+
+        "Maksudku itu dapat membuatku semakin yakin untuk lolos kan?"
+
+        "Jika aku merasa sudah mengunjungi semua tempat aku bisa pulang dengan memesan ojek online lagi di sini."
+
+    menu:
+        "Apa yang harus aku lakukan di sini?"
+        "Ke Kiri" if not places_discovered["kantin"]:
+            "Aku mencoba pergi ke sebelah kiri dari gedung..."
+            jump diKantin
+
+        "Ke Kantin" if places_discovered["kantin"]:
+            "Aku pergi ke kantin..."
+            jump diKantin
+
+        "Masuk":
+            "Aku masuk ke gedung Informatika...."
+            jump diGedung1
+
+        "Ke Kanan" if not places_discovered["parkiran"]:
+            "Aku mencoba pergi ke sebelah kanan dari gedung..."
+            jump diParkiran
+
+        "Ke Parkiran" if places_discovered["parkiran"]:
+            "Aku pergi ke parkiran..."
+            jump diParkiran
+
+        "Balik ke bundaran":
+            jump malasBalik
+
+        "Pulang":
+            if discovered_all_places():
+                "Aku sudah melihat semuanya di sini"
+
+                "Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                jump hariUTBK
+
+            else:
+                "Aku rasa masih ada tempat yang belum aku kunjungi"
+
+                "Sebaiknya aku eksplor seluruh tempat ini"
+
+                jump diDepanTC
 
     return
 
+label malasBalik:
+    "Balik ke bundaran?"
+
+    "Yang bener aja panas panas gini aku balik ke tempat terbuka gitu?"
+
+    "Malas ah"
+
+    jump diDepanTC
+
+label diKantin:
+    scene kantin
+    with fade
+    if not places_discovered["kantin"]:
+        $ places_discovered["kantin"] = True
+
+        "Ternyata ini adalah kantin dari Informatika"
+
+        mc "Oh kantinnya di sebelah sini ternyata"
+
+        mc "Ada menu apa aja ya?"
+
+        "Aku melihat menu di kantin"
+
+        mc "Hmm lumayan variatif juga ya menunya"
+
+        "Aku terlalu fokus dengan melihat menu sampai-sampai aku tidak melihat ada orang di belakangku"
+
+        unk "Permisi mas"
+
+        mc "Oh iya silakan"
+
+        "Hmm seharusnya kalau mendekati SNBT mahasiswa di sini tidak ada pembelajaran kan? karena ruang kelasnya
+        dijadikan tempat SNBT."
+
+        "Apakah dia juga lagi survey lokasi?"
+    menu:
+        "Apa yang harus aku lakukan di sini?"
+        "Ajak Ngobrol":
+            jump ngobrol_di_kantin
+
+        "Inspek":
+            jump inspekKantin
+
+        "Kembali ke depan gedung Informatika":
+            "Aku kembali ke depan gedung Informatika..."
+            jump diDepanTC
+
+        "Ke belakang gedung Informatika" if visited_kantin_via_r109 == 1:
+            "Aku kembali ke gedung Informatika lewat belakang..."
+            jump r109
+    return
+
+# Unfinished
+label ngobrol_di_kantin:
+    "ngobrol kantin"
+
+    jump diKantin
+
+label inspekKantin:
+    "Tidak banyak yang bisa dilihat di sini"
+
+    "Kantin ini layaknya kantin pada umumnya dengan beberapa set meja dan kursi"
+
+    "Ada tempat yang memiliki 2 kursi untuk 1 meja, adapula 1 meja yang memiliki 4 kursi"
+
+    "Menu yang dijual juga cukup beragam, ada Nasi Campur, Nasi Goreng, Nasi Ayam, Mi Ayam
+    dan masih banyak lagi"
+
+    "Ada tempat untuk membeli minuman juga yang disimpan di kulkas seperti di minimarket"
+
+    "Jika menghadap sebelah barat aku bisa menikmati hidangan dengan pemandangan sawah yang menyejukkan"
+
+    mc "Cukup oke sih menurutku"
+
+    jump diKantin
+
+# Unfinished
+label diGedung1:
+    if not places_discovered["gedung1"]:
+        $ places_discovered["gedung1"] = True
+    menu:
+        "Apa yang harus aku lakukan di sini?"
+        "Maju Kiri":
+            "Aku maju ke lorong kiri..."
+            jump r109
+
+        "Maju Kanan":
+            "Aku maju ke lorong kanan..."
+            jump r106
+
+        "Naik Tangga":
+            scene tangga1
+            "Aku menaiki Tangga"
+        "Inspek":
+            jump inspekGedung1
+        "Keluar":
+            jump diDepanTC
+    return
+
+# Unfinished
+label inspekGedung1:
+    "Inspek"
+    jump diGedung1
+
+label diParkiran:
+    scene parkiran
+    with fade
+    if not places_discovered["parkiran"]:
+        $ places_discovered["parkiran"] = True
+
+        "Ternyata ini adalah parkiran motor"
+
+        "Tidak ada yang spesial, hanya tempat untuk memarkirkan motor mahasiswa dan dosen"
+
+        mc "Andaikan aku bisa naik motor, pasti ngga perlu keluar banyak duit buat pesen ojek online"
+    else:
+        "Ini hanya tempat memarkirkan motor"
+
+    menu:
+        "Apa yang harus aku lakukan di sini?"
+        "Masuk":
+            jump diGedung2
+        "Ke belakang gedung Informatika" if visited_parkiran_via_r101 == 1:
+            jump r101
+        "Kembali":
+            jump diDepanTC
+        
+    return
+
+
+
+# Unfinished
 label hariUTBK:
     "Ini hari utbk"
 
