@@ -5,6 +5,9 @@
 
 define mc = Character("[McName]")
 define unk = Character("???")
+define bpk = Character("Bapak Bapak TU")
+define bpka = Character("Bapak Bapak Aula")
+define mmh = Character("Mas Mas hengker")
 define nbun = Character("Cynthia")
 define nr101 = Character("Farah")
 define nr105 = Character("Andi")
@@ -26,6 +29,7 @@ default ngobrol_r106 = 0
 default ngobrol_r109 = 0
 default visited_bundaran = 0
 default visited_kantin_via_r109 = 0
+default visited_parkiran_via_r101 = 0
 default places_discovered = {
     "depanTC": False,
     "gedung1": False,
@@ -37,7 +41,7 @@ default places_discovered = {
     "lt2": False,
     "lt3": False,
     "lp2": False,
-    "giga": False,
+    "laboratorium_giga": False,
     "masjid": False,
     "parkiran": False,
     "aula": False,
@@ -670,6 +674,14 @@ label diDepanTC:
 
         "Jadi ini gedung Informatika"
 
+        scene tc_depan
+
+        "Di depan gedung ini ada tulisan Teknik Informatika"
+
+        "Benar-benar eksotis, aku merasa bisa jadi orang paling hebat jika lolos ke jurusan ini di kampus ini"
+
+        scene depantc
+
         "Baiklah mungkin selanjutnya aku mau eksplorasi semua yang ada di gedung ini"
 
         "Maksudku itu dapat membuatku semakin yakin untuk lolos kan?"
@@ -753,6 +765,23 @@ label diKantin:
         dijadikan tempat SNBT."
 
         "Apakah dia juga lagi survey lokasi?"
+
+        if discovered_all_places():
+            "Kurasa aku sudah mengunjungi semua tempat di sini"
+
+            "Aku masih bisa melanjutkan eksplorasi dan pulang dengan cara pesan ojek online di depan gedung Informatika"
+
+            menu:
+                "Apakah aku ingin pulang sekarang?"
+                "Ya":
+                    "Baiklah, Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                    jump hariUTBK
+                "Tidak":
+                    "Aku masih ingin eksplorasi lagi tempat ini"
+
+                    "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
+                
     menu:
         "Apa yang harus aku lakukan di sini?"
         "Ajak Ngobrol":
@@ -794,12 +823,39 @@ label inspekKantin:
 
     jump diKantin
 
-# Unfinished
 label diGedung1:
     scene gedung1
     with fade
     if not places_discovered["gedung1"]:
         $ places_discovered["gedung1"] = True
+
+        "Aku akhirnya menempatkan kakiku di gedung ini"
+
+        "Aku disambut dengan baliho ucapan selamat atas prestasi mahasiswa jurusan ini"
+
+        mc "Gila banyak banget!"
+
+        "Seharusnya aku ngga kaget melihat kemampuan anak yang bisa ngalahin 2.000 peserta SNBT yang lain."
+
+        "Tapi tetep aja ini pertama kali aku ngelihat baliho penghargaan sebesar ini"
+
+        mc "Kalau namaku ada di situ sudah pasti terkenal sih"
+
+        if discovered_all_places():
+            "Kurasa aku sudah mengunjungi semua tempat di sini"
+
+            "Aku masih bisa melanjutkan eksplorasi dan pulang dengan cara pesan ojek online di depan gedung Informatika"
+
+            menu:
+                "Apakah aku ingin pulang sekarang?"
+                "Ya":
+                    "Baiklah, Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                    jump hariUTBK
+                "Tidak":
+                    "Aku masih ingin eksplorasi lagi tempat ini"
+
+                    "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
     menu:
         "Apa yang harus aku lakukan di sini?"
         "Maju Kiri" if not places_discovered["r109"]:
@@ -815,11 +871,11 @@ label diGedung1:
             jump r106
 
         "Ke Lorong Ruang 106-108" if places_discovered["r106"]:
-            "Aku maju ke lorong kiri..."
+            "Aku maju ke lorong kanan..."
             jump r106
 
         "Naik Tangga":
-            scene tangga1
+            scene tangga_naik
             "Aku menaiki Tangga..."
 
             jump lt2
@@ -828,6 +884,7 @@ label diGedung1:
             jump inspekGedung1
 
         "Keluar":
+            "Aku keluar dari sini..."
             jump diDepanTC
     return
 
@@ -848,6 +905,22 @@ label r109:
 
         "Apakah dia salah satu mahasiswa atau anak yang lagi survey juga?"
 
+        if discovered_all_places():
+            "Kurasa aku sudah mengunjungi semua tempat di sini"
+
+            "Aku masih bisa melanjutkan eksplorasi dan pulang dengan cara pesan ojek online di depan gedung Informatika"
+
+            menu:
+                "Apakah aku ingin pulang sekarang?"
+                "Ya":
+                    "Baiklah, Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                    jump hariUTBK
+                "Tidak":
+                    "Aku masih ingin eksplorasi lagi tempat ini"
+
+                    "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
+
     menu:
         "Apa yang harus aku lakukan di sini?"
         "Ajak Ngobrol":
@@ -867,7 +940,8 @@ label r109:
 
             mc "Oww ada jalan pintas juga rupanya"
 
-            mc "Untung aja daripada aku harus mutar jauh cuma untuk ke kantin"
+            mc "Kalo gini bisa cepet ke kantin dong dari kelas
+            daripada aku harus mutar jauh cuma untuk ke kantin"
 
             mc "Bisa-bisa meninggal duluan aku"
 
@@ -885,8 +959,13 @@ label inspekR109:
     scene kiri_lt1
     "Hanya lorong biasa yang berisikan ruang kelas dan ada lab untuk mahasiswa pascasarjana juga"
 
+    "Ada kelas 109, 110, 111, 112, dan 113 di sini"
+
     scene r109
     "Di bagian utara dari sini ada beberapa tempat duduk serta meja untuk belajar"
+
+    scene plasa
+    "Lebih jauh ada semacam tempat belajar outdoor yang cukup luas"
 
     scene lapangan
     "Dan lebih keluar lagi ada lapangan untuk melakukan berbagai aktivitas olahraga"
@@ -917,6 +996,22 @@ label r106:
 
         "Apakah dia salah satu mahasiswa atau anak yang lagi survey juga?"
 
+        if discovered_all_places():
+            "Kurasa aku sudah mengunjungi semua tempat di sini"
+
+            "Aku masih bisa melanjutkan eksplorasi dan pulang dengan cara pesan ojek online di depan gedung Informatika"
+
+            menu:
+                "Apakah aku ingin pulang sekarang?"
+                "Ya":
+                    "Baiklah, Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                    jump hariUTBK
+                "Tidak":
+                    "Aku masih ingin eksplorasi lagi tempat ini"
+
+                    "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
+
     menu:
         "Apa yang harus aku lakukan di sini?"
         "Ajak Ngobrol":
@@ -924,12 +1019,16 @@ label r106:
         "Inspek":
             jump inspekR106
         "Maju" if not places_discovered["gedung2"]:
+            "Aku maju terus ke arah utara..."
             jump diGedung2
-        "Ke Gedung Informatika bagian Utara":
+        "Ke Gedung Informatika bagian Utara" if places_discovered["gedung2"]:
+            "Aku maju terus ke arah utara..."
             jump diGedung2
         "Ke Gedung Informatika bagian Selatan":
+            "Aku maju terus ke arah selatan..."
             jump diGedung1
 
+#Unfinished
 label ngobrol_di_r106:
     "Ngobrol"
 
@@ -937,6 +1036,8 @@ label ngobrol_di_r106:
 
 label inspekR106:
     "Hanya lorong biasa yang berisikan ruang kelas"
+
+    "Di sini ada kelas 106, 107, dan 108."
 
     "Di bagian barat dari sini ada beberapa tempat duduk serta meja untuk belajar"
 
@@ -952,7 +1053,7 @@ label inspekR106:
     scene musholla
     "Aku juga dapat melihat musholla di bagian barat laut yang dekat dengan bagian belakang dari gedung ini"
 
-    jump r109
+    jump r106
 
 label diGedung2:
     scene gedung2
@@ -960,11 +1061,86 @@ label diGedung2:
     if not places_discovered["gedung2"]:
         $ places_discovered["gedung2"] = True
 
+        "Jika aku keluar dari sini maka aku bisa langsung ke parkiran motor"
+
+        mc "Jika sewaktu waktu aku kuliah di kelas bagian gedung ini"
+
+        mc "Maka aku harus cepat cepat belajar mengendarai motor"
+
+        mc "Daripada harus jalan sejauh ini dari depan"
+
+        mc "Apalagi waktu terlambat, bisa-bisa belajar di luar aku"
+
+        if discovered_all_places():
+            "Kurasa aku sudah mengunjungi semua tempat di sini"
+
+            "Aku masih bisa melanjutkan eksplorasi dan pulang dengan cara pesan ojek online di depan gedung Informatika"
+
+            menu:
+                "Apakah aku ingin pulang sekarang?"
+                "Ya":
+                    "Baiklah, Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                    jump hariUTBK
+                "Tidak":
+                    "Aku masih ingin eksplorasi lagi tempat ini"
+
+                    "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
+    menu:
+        "Apa yang harus aku lakukan di sini?"
+        "Naik Tangga":
+            jump mau_ke_lt2
+        "Inspek":
+            jump inspekGedung2
+        "Maju kiri" if not places_discovered["r106"]:
+            "Aku pergi ke arah kiri depan..."
+            jump r106
+        "Ke lorong Ruang 106-108" if places_discovered["r106"]:
+            "Aku pergi ke lorong ruang 106-108..."
+            jump r106
+        "Maju kanan" if not places_discovered["r101"]:
+            "Aku pergi ke arah kanan depan..."
+            jump r101
+        "Ke lorong Ruang 106-108" if places_discovered["r101"]:
+            "Aku pergi ke lorong ruang 101-105..."
+            jump r101
+        "Keluar":
+            jump diParkiran
+        
 label mau_ke_lt2:
-    scene tangga_dikunci
-    with fade
     if not places_discovered["lt2_closed"]:
         $ places_discovered["lt2_closed"] = True
+
+        "Aku mencoba membuka pintu yang menghalangi tangga"
+
+        mc "Oh pintunya dikunci"
+
+        "Jika aku ingin naik ke lantai 2, aku harus mencari tangga yang lain."
+
+        if discovered_all_places():
+            "Kurasa aku sudah mengunjungi semua tempat di sini"
+
+            "Aku masih bisa melanjutkan eksplorasi dan pulang dengan cara pesan ojek online di depan gedung Informatika"
+
+            menu:
+                "Apakah aku ingin pulang sekarang?"
+                "Ya":
+                    "Baiklah, Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                    jump hariUTBK
+                "Tidak":
+                    "Aku masih ingin eksplorasi lagi tempat ini"
+
+                    "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
+    else:
+        "Jika aku ingin naik ke lantai 2, aku harus mencari tangga yang lain."
+    jump diGedung2
+
+#unfinished
+label inspekGedung2:
+    "Inspek gedung 2"
+
+    jump diGedung2
 
 label r101:
     scene r101
@@ -972,11 +1148,129 @@ label r101:
     if not places_discovered["r101"]:
         $ places_discovered["r101"] = True
 
+        "Nampaknya seperti lorong biasa yang berisikan kelas-kelas"
+
+        "Aku juga melihat ada anak yang sedang duduk di salah satu kursi di sini"
+
+        "Apakah dia salah satu mahasiswa atau anak yang lagi survey juga?"
+
+        if discovered_all_places():
+            "Kurasa aku sudah mengunjungi semua tempat di sini"
+
+            "Aku masih bisa melanjutkan eksplorasi dan pulang dengan cara pesan ojek online di depan gedung Informatika"
+
+            menu:
+                "Apakah aku ingin pulang sekarang?"
+                "Ya":
+                    "Baiklah, Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                    jump hariUTBK
+                "Tidak":
+                    "Aku masih ingin eksplorasi lagi tempat ini"
+
+                    "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
+    menu:
+        "Apa yang harus aku lakukan di sini?"
+        "Ajak ngobrol":
+            jump ngobrol_di_r101
+        "Inspek":
+            jump inspekR101
+        "Ke Musholla":
+            "Aku pergi ke musholla...."
+            jump masjid
+        "Ke gedung bagian utara":
+            jump diGedung2
+        "Maju Kanan" if visited_parkiran_via_r101 == 0:
+            $ visited_parkiran_via_r101 = 1
+
+            "Aku mencoba terus maju..."
+
+            scene parkiran
+            with fade
+
+            mc "Oh ternyata bisa ke parkiran juga ya"
+
+            mc "Ya bagus sih biar yang parkirnya di belakang banget ga perlu jauh jauh untuk masuk ke gedungnya"
+            jump diParkiran
+        "Ke Parkiran" if visited_parkiran_via_r101 == 1:
+            jump diParkiran
+
+label inspekR101:
+    "Hanya lorong biasa yang berisikan ruang kelas"
+
+    "Di sini ada kelas 105, 104, 103, 102, dan 101."
+
+    "Di bagian selatan dari sini ada beberapa tempat duduk serta meja untuk belajar"
+
+    scene plasa
+    "Lebih jauh ada semacam tempat belajar outdoor yang cukup luas"
+
+    scene lapangan
+    "Dan lebih keluar lagi ada lapangan untuk melakukan berbagai aktivitas olahraga"
+
+    scene panggung
+    "Kemudian di belakang lapangan itu ada panggung yang kemungkinan digunakan untuk acara-acara mahasiswa"
+
+    scene musholla
+    "Aku juga dapat melihat musholla di bagian barat yang dekat dengan bagian belakang dari gedung ini"
+
+    jump r101
+
+#unfinished
+label ngobrol_di_r101:
+    "Ngobrol"
+    jump r101
+
 label masjid:
     scene musholla dalam
     with fade
     if not places_discovered["masjid"]:
         $ places_discovered["masjid"] = True
+
+        "Jadi ini mushollanya"
+
+        "Tempatnya lumayan sejuk karena ada AC, tetapi tergolong kecil untuk fasilitas yang di mana jumlah mahasiswanya
+        bisa sampai 1.000"
+
+        "Oh di sini ada orang yang selesai sholat juga rupanya"
+
+        "Dia kayaknya masih muda, apakah dia lagi ngesurvey lokasi SNBT juga?"
+
+        if discovered_all_places():
+            "Kurasa aku sudah mengunjungi semua tempat di sini"
+
+            "Aku masih bisa melanjutkan eksplorasi dan pulang dengan cara pesan ojek online di depan gedung Informatika"
+
+            menu:
+                "Apakah aku ingin pulang sekarang?"
+                "Ya":
+                    "Baiklah, Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                    jump hariUTBK
+                "Tidak":
+                    "Aku masih ingin eksplorasi lagi tempat ini"
+
+                    "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
+    menu:
+        "Apa yang harus aku lakukan di sini?"
+        "Ajak Ngobrol":
+            jump ngobrol_di_masjid
+        "Inspek":
+            jump inspekMasjid
+        "Keluar":
+            jump r101
+
+#Unfinished
+label inspekMasjid:
+    "Inspek masjid"
+
+    jump masjid
+
+#Unfinished
+label ngobrol_di_masjid:
+    "Ngobrol di masjid"
+
+    jump masjid
 
 label diParkiran:
     scene parkiran
@@ -989,6 +1283,22 @@ label diParkiran:
         "Tidak ada yang spesial, hanya tempat untuk memarkirkan motor mahasiswa dan dosen"
 
         mc "Andaikan aku bisa naik motor, pasti ngga perlu keluar banyak duit buat pesen ojek online"
+
+        if discovered_all_places():
+            "Kurasa aku sudah mengunjungi semua tempat di sini"
+
+            "Aku masih bisa melanjutkan eksplorasi dan pulang dengan cara pesan ojek online di depan gedung Informatika"
+
+            menu:
+                "Apakah aku ingin pulang sekarang?"
+                "Ya":
+                    "Baiklah, Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                    jump hariUTBK
+                "Tidak":
+                    "Aku masih ingin eksplorasi lagi tempat ini"
+
+                    "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
     else:
         "Ini hanya tempat memarkirkan motor"
 
@@ -1002,16 +1312,108 @@ label diParkiran:
             jump diDepanTC
 
 label lt2:
-    scene lt2
+    scene lantai2
     with fade
     if not places_discovered["lt2"]:
         $ places_discovered["lt2"] = True
+
+        "Aku sampai di lantai 2"
+
+        "Yang pertama kali menarik perhatianku adalah papan madingnya"
+
+        "Banyak sekali jenis jenis lomba yang bisa diikuti oleh mahasiswa di sini"
+
+        mc "Ada CTF, Hackathon, Competitive Programming..."
+
+        "Aku tidak tau maksud kebanyakan dari jenis jenis lomba yang tertulis"
+
+        "Tetapi itu artinya mereka yang bisa memenangkan lomba itu adalah orang yang sangat hebat bukan?"
+
+        if discovered_all_places():
+            "Kurasa aku sudah mengunjungi semua tempat di sini"
+
+            "Aku masih bisa melanjutkan eksplorasi dan pulang dengan cara pesan ojek online di depan gedung Informatika"
+
+            menu:
+                "Apakah aku ingin pulang sekarang?"
+                "Ya":
+                    "Baiklah, Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                    jump hariUTBK
+                "Tidak":
+                    "Aku masih ingin eksplorasi lagi tempat ini"
+
+                    "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
+    
+    menu:
+        "Apa yang harus aku lakukan di sini?"
+        "Inspek":
+            jump inspekLt2
+        "Maju Kiri":
+            jump keTU
+        "Maju Kanan":
+            jump keAula
+        "Naik Tangga":
+            scene tangga_naik
+            "Aku menaiki tangga..."
+            jump lt3
+        "Turun Tangga":
+            scene tangga_turun
+            "Aku menuruni tangga..."
+            jump diGedung1
+
+#Unfinished
+label inspekLt2:
+    "Inspek"
+
+    jump lt2
 
 label keTU:
     scene ruang_tu
     with fade
     if not places_discovered["tu"]:
         $ places_discovered["tu"] = True
+        "Aku pergi ke arah kiri..."
+
+        "Kemudian ada orang keluar dari ruang yang kulihat tulisannya merupakan Ruang TU"
+
+        "Orang itu berjalan mendekatiku"
+
+        show bapak bapak tu
+
+        bpk "Maaf mas ini sedang ada meeting jadi masnya dimohon jangan lewat dulu nggih"
+
+        mc "Oh iya pak"
+
+        hide bapak bapak tu
+
+        "Ada meeting?"
+
+        "Kenapa ngga boleh lewat, emangnya meetingnya di luar?"
+
+        "Ya sebaiknya aku patuhi kata-kata bapak itu supaya aku tidak diusir"
+
+        if discovered_all_places():
+            "Kurasa aku sudah mengunjungi semua tempat di sini"
+
+            "Aku masih bisa melanjutkan eksplorasi dan pulang dengan cara pesan ojek online di depan gedung Informatika"
+
+            menu:
+                "Apakah aku ingin pulang sekarang?"
+                "Ya":
+                    "Baiklah, Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                    jump hariUTBK
+                "Tidak":
+                    "Aku masih ingin eksplorasi lagi tempat ini"
+
+                    "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
+
+        jump lt2
+    else:
+        "Aku tidak bisa melewati lorong ini"
+
+        jump lt2
 
 label keAula:
     scene ruang_aula
@@ -1019,23 +1421,217 @@ label keAula:
     if not places_discovered["aula"]:
         $ places_discovered["aula"] = True
 
+        "Aku pergi ke arah kanan..."
+
+        "Kemudian ada orang keluar dari ruangan yang nampaknya tertulis \"Aula\""
+
+        "Orang itu berjalan mendekatiku"
+
+        show bapak bapak aula
+
+        bpka "Maaf mas di Aula lagi ada shooting seminar orang tua mahasiswa, dimohon masnya
+        tidak lewat sini nggih"
+
+        mc "Oh iya pak"
+
+        hide bapak bapak aula
+
+        "Waduh kayaknya lagi ada acara"
+
+        "Mending aku ikutin kata bapaknya aja deh daripada diusir"
+
+        if discovered_all_places():
+            "Kurasa aku sudah mengunjungi semua tempat di sini"
+
+            "Aku masih bisa melanjutkan eksplorasi dan pulang dengan cara pesan ojek online di depan gedung Informatika"
+
+            menu:
+                "Apakah aku ingin pulang sekarang?"
+                "Ya":
+                    "Baiklah, Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                    jump hariUTBK
+                "Tidak":
+                    "Aku masih ingin eksplorasi lagi tempat ini"
+
+                    "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
+
+        jump lt2
+    else:
+        "Aku tidak bisa melewati lorong ini"
+
 label lt3:
     scene lt3
     with fade
     if not places_discovered["lt3"]:
         $ places_discovered["lt3"] = True
 
+        "Aku sampai di Lantai 3"
+
+        "..."
+
+        "Wah"
+
+        "Tempat ini sudah seperti salon yang sangat di luar jangkauanku"
+
+        mc "Orang luar kalo pengen belajar gitu boleh ga ya belajar di sini?"
+
+        "Vibe yang dipancarkan oleh tempat ini benar benar bisa bikin santai."
+
+        if discovered_all_places():
+            "Kurasa aku sudah mengunjungi semua tempat di sini"
+
+            "Aku masih bisa melanjutkan eksplorasi dan pulang dengan cara pesan ojek online di depan gedung Informatika"
+
+            menu:
+                "Apakah aku ingin pulang sekarang?"
+                "Ya":
+                    "Baiklah, Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                    jump hariUTBK
+                "Tidak":
+                    "Aku masih ingin eksplorasi lagi tempat ini"
+
+                    "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
+
+    menu:
+        "Apa yang harus aku lakukan di sini?"
+        "Inspek":
+            jump inspekLt3
+        "Maju Kiri":
+            "Aku bergerak ke arah depan kiri..."
+            jump lp2
+        "Maju Kanan":
+            jump labgiga
+        "Turun tangga":
+            scene tangga_turun
+            "Aku menuruni tangga...."
+            jump lt2
+
+#Unfinished
+label inspekLt3:
+    "Inspek"
+
+    jump lt3
+
 label labgiga:
     scene lab_giga
     with fade
-    if not places_discovered["giga"]:
-        $ places_discovered["giga"] = True
+    if not places_discovered["laboratorium_giga"]:
+        $ places_discovered["laboratorium_giga"] = True
 
+        "Aku pergi ke arah kanan..."
+
+        "Kemudian ada orang keluar dari ruangan yang nampaknya tertulis Lab Interaksi, Grafika, dan Seni"
+
+        "Lab untuk apa itu kira kira?"
+
+        "Orang itu berjalan mendekatiku"
+
+        show mas mas hengker
+
+        mmh "Maaf mas di Aula lagi ada shooting film mahasiswa henger, dimohon masnya
+        tidak lewat lorong sebelah sini ya"
+
+        mc "Oh iya mas"
+
+        hide mas mas hengker
+
+        "Wah shooting film?"
+
+        "Mending aku ngga lewat sini dulu sih biar ngga ngganggu proses shootingnya"
+
+        if discovered_all_places():
+            "Kurasa aku sudah mengunjungi semua tempat di sini"
+
+            "Aku masih bisa melanjutkan eksplorasi dan pulang dengan cara pesan ojek online di depan gedung Informatika"
+
+            menu:
+                "Apakah aku ingin pulang sekarang?"
+                "Ya":
+                    "Baiklah, Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                    jump hariUTBK
+                "Tidak":
+                    "Aku masih ingin eksplorasi lagi tempat ini"
+
+                    "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
+    else:
+        "Aku tidak bisa melewati lorong ini"
+    jump lt3
+
+#unfinished
 label lp2:
-    scene lp2
-    with fade
     if not places_discovered["lp2"]:
         $ places_discovered["lp2"] = True
+
+        "Aku melewati beberapa lorong yang tampaknya berisikan beberapa lab"
+
+        "Lab algoritma pemrograman... Lab Pemrograman 2..."
+
+        mc "Bentar..."
+
+        mc "Lab Pemrograman 2?"
+
+        mc "Kalau disingkat berarti jadi Lp2?"
+
+        "Aku akhirnya mencoba masuk ke dalam ruangan itu"
+
+        scene lp2
+        with fade
+
+        "Yap ternyata benar"
+
+        "Ini adalah lokasi aku melaksanakan SNBT ku nanti"
+
+        "Aku tahu karena ada tulisan angka di atas monitor komputernya yang menandakan angka tempat duduk"
+
+        mc "Oh ternyata ada yang udah dateng duluan"
+
+        "Dari kejauhan terlihat ada cewek yang sedang browsing di komputer lab ini"
+
+        "Apakah dia mahasiswa atau anak yang sedang survey juga?"
+
+        if discovered_all_places():
+            "Kurasa aku sudah mengunjungi semua tempat di sini"
+
+            "Aku masih bisa melanjutkan eksplorasi dan pulang dengan cara pesan ojek online di depan gedung Informatika"
+
+            menu:
+                "Apakah aku ingin pulang sekarang?"
+                "Ya":
+                    "Baiklah, Saatnya pulang dan bersiap untuk hari yang dapat mengubah hidupku"
+
+                    jump hariUTBK
+                "Tidak":
+                    "Aku masih ingin eksplorasi lagi tempat ini"
+
+                    "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
+    else:
+        scene lp2
+        with fade
+
+    menu:
+        "Apa yang harus aku lakukan di sini"
+        "Ajak ngobrol":
+            jump ngobrol_di_lp2
+        "Inspek":
+            jump inspekLp2
+        "Keluar":
+            "Aku keluar dari ruangan..."
+            jump lt3
+
+#unfinished
+label inspekLp2:
+    "Inspek"
+
+    jump lp2
+
+#Unfinished
+label ngobrol_di_lp2:
+    "Ngobrol"
+
+    jump lp2
 
 # Unfinished
 label hariUTBK:
