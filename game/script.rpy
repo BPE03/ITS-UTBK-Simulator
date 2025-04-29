@@ -12,6 +12,7 @@ define nr109 = Character("Billy")
 define nlp2 = Character("Elisa")
 define nkantin = Character("Danan")
 define nmasjid = Character("Gilang")
+define audio.c1 = "<loop 21.44>audio/Sun_Rays.wav"
 
 default eksplor = 0
 default inspectedBundaran = 0
@@ -78,6 +79,24 @@ label start:
 
     unk "Apapun alasanmu aku tidak akan berkomentar."
 
+    unk "Oh ya, FSM dari game ini dapat di lihat di gambar berikut"
+
+    unk "...."
+
+    unk "Oh tidak aku tidak punya miro premium :("
+
+    show fsm
+
+    unk "Kamu bisa menekan tombol 'H' untuk menyembunyikan kotak dialog ini.
+    jika kamu ingin melihat lebih jelas dapat diakses melalui link ini
+    https://miro.com/app/board/uXjVI92-RAM=/?share_link_id=344571530145"
+
+    unk "Melanjutkan dialog ini akan menghilangkan gambar FSM"
+
+    hide fsm
+
+    unk "Ngomong-ngomong..."
+
     unk "Jika kamu adalah orang yang ingin masuk ke ITS dengan jalur SNBT..."
 
     unk "Ingatlah kunci agar lulus SNBT itu adalah......."
@@ -94,6 +113,11 @@ label prologue:
     mc "Uwahhhhh!!!!!"
 
     mc "huft... huft...."
+
+    play music c1
+
+    scene kamar
+    with fade
 
     mc "Mimpi apa itu tadi?"
 
@@ -186,6 +210,7 @@ label prologue:
             $ eksplor = 1
 
         "Malasss":
+            $ renpy.music.set_volume(0.0, delay=1, channel='music')
 
             show unknown
 
@@ -258,6 +283,8 @@ label prologue:
                                 "Aku mau menghargai usaha developer":
                                     
                                     $ eksplor = 1
+
+            $ renpy.music.set_volume(1.0, delay=1, channel='music')
                                 
     if eksplor == 1:
 
