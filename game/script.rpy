@@ -1017,6 +1017,9 @@ label diGedung1:
                     "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
     menu:
         "Apa yang harus aku lakukan di sini?"
+
+        "Inspek":
+            jump inspekGedung1
         "Maju Kiri" if not places_discovered["r109"]:
             "Aku maju ke lorong kiri..."
             jump r109
@@ -1038,9 +1041,6 @@ label diGedung1:
             "Aku menaiki Tangga..."
 
             jump lt2
-
-        "Inspek":
-            jump inspekGedung1
 
         "Keluar":
             "Aku keluar dari sini..."
@@ -1453,10 +1453,10 @@ label diGedung2:
                     "Barangkali ada hal yang terlewat atau aku ingin ngobrol dengan anak-anak di sini"
     menu:
         "Apa yang harus aku lakukan di sini?"
-        "Naik Tangga":
-            jump mau_ke_lt2
         "Inspek":
             jump inspekGedung2
+        "Naik Tangga":
+            jump mau_ke_lt2
         "Maju kiri" if not places_discovered["r106"]:
             "Aku pergi ke arah kiri depan..."
             jump r106
