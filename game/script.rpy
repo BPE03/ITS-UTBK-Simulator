@@ -2674,6 +2674,8 @@ label masuk_ruangan:
         "825":
             "Apakah benar ini jawabannya?"
     
+    scene kamar
+    with fade
     if correctAnswer < 0:
         jump bad_ending
     if correctAnswer > 1 and correctAnswer <= 7:
@@ -2682,21 +2684,22 @@ label masuk_ruangan:
         jump best_ending
 
 label bad_ending:
-    "Aku gagal lolos ke Informatika ITS"
+    "Aku gagal lolos ke Informatika ITS karena hanya berhasil menjawab [correctAnswer] soal"
 
     "Bad ending"
 
     return
 
 label good_ending:
-    "Aku lolos ke Informatika ITS"
+    "Aku lolos ke Informatika ITS karena berhasil menjawab [correctAnswer] soal"
 
     "Good ending"
 
     return
 
 label best_ending:
-    "Aku lolos ke Informatika ITS dengan nilai SNBT tertinggi"
+    "Aku lolos ke Informatika ITS dengan nilai SNBT tertinggi karena berhasil menjawab semua soal dan
+    melakukan eksplorasi kampus"
 
     "Best ending"
 
