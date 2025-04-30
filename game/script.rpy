@@ -10,7 +10,7 @@ define bpka = Character("Bapak Bapak Aula")
 define mmh = Character("Mas Mas hengker")
 define nbun = Character("Cynthia")
 define nr101 = Character("Elisa")
-define nr105 = Character("Andi")
+define nr106 = Character("Andi")
 define nr109 = Character("Diana")
 define nlp2 = Character("Farah")
 define nkantin = Character("Bagas")
@@ -1256,9 +1256,146 @@ label r106:
             "Aku maju terus ke arah selatan..."
             jump diGedung1
 
-#Unfinished
 label ngobrol_di_r106:
-    "Ngobrol"
+    if ngobrol_r106 == 0:
+        $ ngobrol_r106 += 1
+
+        "Aku mencoba menghampiri anak itu"
+
+        mc "Permis mas, masnya survey lokasi SNBT juga kah?"
+
+        show andi netral
+
+        unk "Yoww whatsapp my N****? yes aku habis survey lokasi buat SNBT ini"
+
+        mc "Loh mas ini game edukasi mas jangan ngomong aneh aneh"
+
+        hide andi netral
+        show andi kaget
+
+        unk "Hah maksud e?"
+
+        mc "Uhh lupakan aja aku ngomong apa tadi, berarti masnya pengen kuliah di ITS?"
+
+        hide andi kaget
+        show andi netral
+
+        unk "Yoii"
+
+        mc "Pengen kuliah di jurusan mana mas?"
+
+        unk "Informatika dongg gamer masa ngga ngoding, ya kalo ngga keterima sih aku sek berharap
+        lolos Sistem Informasi lah"
+
+        mc "Woww lumayan juga ya mas kedua jurusannya, kebetulan aku juga pengen masuk informatika nih"
+
+        hide andi netral
+        show andi kaget
+
+        unk "Seriusan???"
+
+        hide andi kaget
+        show andi netral
+
+        unk "My boyy"
+
+        unk "Good luck lah yak"
+
+        mc "Okee sama-sama bang, btw boleh kenalan ga? kenalin aku [McName]"
+
+        nr106 "Oww [McName] kenalin aku Andi"
+
+        mc "Okee salam kenal Andi"
+
+        nr106 "Salam kenal juga"
+    elif ngobrol_r106 == 1:
+        $ ngobrol_r106 += 1
+
+        mc "Btw persiapan SNBT gimana aman kah?"
+
+        show andi netral
+
+        nr106 "Hadeuhh ini yang bikin deg-degan"
+
+        nr106 "Nilai TO ku ngga naik naik men, stuck di 600 ke bawah terus"
+
+        nr106 "Padahal udah sering banget ikutan TO gini"
+
+        mc "Oww... sama sih nilaiku juga masih stuck di uang koin"
+
+        hide andi netral
+        show andi ketawa
+
+        nr106 "AHAHAHAHA"
+
+        hide andi ketawa
+        show andi netral
+
+        nr106 "Gile emang susah banget soal-soalnya yak, udah gitu waktunya dikit lagi"
+
+        nr106 "Aku jadi selalu bergantung di nilai bahasa inggrisku terus"
+
+        mc "Ohh berarti nilai tertinggimu di bahasa inggris yak? boleh kasih tips ga biar
+        aku bisa improve di bahasa inggris ku?"
+
+        nr106 "Banyak-banyakin baca aje sih bang, aku sering baca majalah majalah bahasa inggris gitu"
+
+        nr106 "Lama kelamaan aku jadi tau nih caranya nentuin ide utama, makna paragraf, makna tersirat,
+        ya pokoknya yang ada di soalnya lah"
+
+        nr106 "Tapi kalo ngga sempet ngerjain aku nembak D sih bang, meskipun gitu nilaiku tetep mantap
+        bahasa inggrisnya"
+
+        mc "Ohh banyakin baca ya bang, okee makasih tipsnya yak"
+
+        nr106 "Yoii"
+
+        hide andi netral
+    elif ngobrol_r106 == 2:
+        $ ngobrol_r106 += 1
+
+        mc "Rencana kalo udah lolos mau ngapain bang?"
+
+        show andi netral
+
+        nr106 "Kalo bisa lolos ya aku fokus jaga nilai IPK ku aja sih biar ntar bisa dapet beasiswa
+        sama gampang cari kerjaan aja"
+
+        mc "Ohh fokus belajar aja ya bang jadinya"
+
+        nr106 "Iyes, sama kalo bisa aku bakal ngelanjutin ngeyoutube sih"
+
+        mc "Oh kamu ada channel youtube bang?"
+
+        nr106 "Yoii don't forget to like and subscribe to Jaequiin ya gaes ya"
+
+        "Aku mencoba melihat akun youtubenya melalui hp ku..."
+
+        mc "Wow 36k Subscriber? mantap banget sih ini bang"
+
+        nr106 "Yoii jangan lupa share ke temen temenmu juga ye bang bantuin adsense ku"
+
+        mc "Amann, berarti kamu juga suka main catur bang? kulihat lihat videonya tentang catur semua"
+
+        nr106 "Yoii kebetulan hoki aje sih bang karena aku bikinnya waktu pandemi. di situ catur lagi
+        populer populernya"
+
+        nr106 "Tapi sekarang entah kenapa udah mulai berkurang yang minat"
+
+        mc "Ohh bener banget sih itu bang, ngikutin pasar bisa kebawa arus juga"
+
+        mc "ya mungkin pasarnya catur emang udah mulai redup ya,
+        jujur aku ga pernah main catur jadi ga tau"
+
+        nr106 "Yaa... pokoknya share aja bang ke temen temen abang barangkali ada yang minat"
+
+        mc "Okee siap good luck ya!"
+
+        nr106 "Yoii"
+
+        hide andi netral
+    else:
+        "Aku sudah tidak punya topik yang ingin kubicarakan"
 
     jump r106
 
