@@ -138,26 +138,31 @@ style window:
     background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
 
 style namebox:
-    xpos gui.name_xpos
+    xpos 400
     xanchor gui.name_xalign
-    xsize gui.namebox_width
-    ypos gui.name_ypos
-    ysize gui.namebox_height
+    xsize 290
+    xalign 0.5
+    ypos -100
+    ysize 90
 
     background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
     padding gui.namebox_borders.padding
 
 style say_label:
-    properties gui.text_properties("name", accent=True)
-    xalign gui.name_xalign
+    properties gui.text_properties("name",accent=False)
+    color gui.name_color
+    bold True
+    xalign 0.5
     yalign 0.5
+    # xpos 100
+    # ypos -65
 
 style say_dialogue:
     properties gui.text_properties("dialogue")
 
-    xpos gui.dialogue_xpos
-    xsize gui.dialogue_width
-    ypos gui.dialogue_ypos
+    xpos 490
+    xsize 990
+    ypos 25
 
     adjust_spacing False
 
@@ -174,14 +179,19 @@ style say_dialogue:
 screen input(prompt):
     style_prefix "input"
 
-    window:
-
+    frame:
+        background Frame("gui/input_frame_bg.png", Borders(25,25,25,25))
+        xalign 0.5
+        yalign 0.5
+        xpadding 30
+        ypadding 30
         vbox:
-            xanchor gui.dialogue_text_xalign
-            xpos gui.dialogue_xpos
-            xsize gui.dialogue_width
-            ypos gui.dialogue_ypos
-
+            # xanchor gui.dialogue_text_xalign
+            # xpos gui.dialogue_xpos
+            xsize 508
+            ysize 200
+            # ypos gui.dialogue_ypos
+            spacing 10
             text prompt style "input_prompt"
             input id "input"
 
@@ -190,10 +200,14 @@ style input_prompt is default
 style input_prompt:
     xalign gui.dialogue_text_xalign
     properties gui.text_properties("input_prompt")
+    color "#505050"
+    font 'fonts/Himawari-Bold.otf'
 
 style input:
     xalign gui.dialogue_text_xalign
     xmaximum gui.dialogue_width
+    color "#00c728"
+    font 'fonts/Himawari-Bold.otf'
 
 
 ## Choice screen ###############################################################
@@ -355,6 +369,7 @@ screen main_menu():
     tag menu
 
     add gui.main_menu_background
+    
 
     ## This empty frame darkens the main menu.
     frame:
@@ -396,10 +411,11 @@ style main_menu_vbox:
     yalign 0.5
     ypos 150
     
+    
 
 style main_menu_text:
-    font "fonts/Fredoka-Bold.ttf"
-    size 100
+    font "fonts/Himawari-Bold.otf"
+    size 200
     # properties gui.text_properties("main_menu", accent=True)
     xalign 0.5
 
@@ -507,7 +523,7 @@ style game_menu_outer_frame:
     bottom_padding 45
     top_padding 180
 
-    background "gui/overlay/game_menu.png"
+    background "gui/overlay/game_menu_right.png"
 
 style game_menu_navigation_frame:
     xsize 420
@@ -515,13 +531,14 @@ style game_menu_navigation_frame:
 
 style game_menu_content_frame:
     left_margin 0
-    right_margin 30
+    right_margin 700
     top_margin 15
 
 style game_menu_viewport:
     xsize 1380
 
 style game_menu_vscrollbar:
+    xpos -1700
     unscrollable gui.unscrollable
 
 style game_menu_side:
@@ -569,7 +586,8 @@ screen about():
             if gui.about:
                 text "[gui.about!t]\n"
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text _("Made with Renpy")
+            text _("By : Bima and Ni'am ")
 
 
 style about_label is gui_label

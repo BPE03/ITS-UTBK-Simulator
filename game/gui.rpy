@@ -26,6 +26,7 @@ define config.check_conflicting_properties = True
 
 ## An accent color used throughout the interface to label and highlight text.
 define gui.accent_color = '#077131'
+define gui.name_color = '#ffffff'
 
 ## The color used for a text button when it is neither selected nor hovered.
 define gui.idle_color = '#ffffff'
@@ -50,23 +51,23 @@ define gui.muted_color = '#246614'
 define gui.hover_muted_color = '#014701'
 
 ## The colors used for dialogue and menu choice text.
-define gui.text_color = '#ffffff'
+define gui.text_color = '#505050'
 define gui.interface_text_color = '#ffffff'
 
 
 ## Fonts and Font Sizes ########################################################
 
 ## The font used for in-game text.
-define gui.text_font = "DejaVuSans.ttf"
+define gui.text_font = "fonts/Himawari-Bold.otf"
 
 ## The font used for character names.
 define gui.name_text_font = "DejaVuSans.ttf"
 
 ## The font used for out-of-game text.
-define gui.interface_text_font = "fonts/Fredoka-Regular.ttf"
+define gui.interface_text_font = "fonts/Himawari-Bold.otf"
 
 ## The size of normal dialogue text.
-define gui.text_size = 33
+define gui.text_size = 42
 
 ## The size of character names.
 define gui.name_text_size = 45
@@ -418,7 +419,7 @@ define gui.language = "unicode"
 ################################################################################
 
 init python:
-
+    
     ## This increases the size of the quick buttons to make them easier to touch
     ## on tablets and phones.
     @gui.variant
