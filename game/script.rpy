@@ -1213,7 +1213,42 @@ label inspekR109:
 
 # Unfinished
 label ngobrol_di_r109:
-    nr109 "PU nembak B udah"
+    if ngobrol_r109 == 0:
+        $ ngobrol_r109 += 1
+        "Aku mencoba mengajak ngobrol anak itu"
+
+        mc "Halo mbak, mbaknya survey lokasi SNBT juga kah?"
+
+        unk "Iya"
+
+        mc "Oh sama nih, mau kuliah di ITS juga kah mbak atau tes di sini karena deket aja?"
+
+        unk "Karena deket aja sih"
+
+        mc "Oh okee, btw boleh kenalan ga? aku [McName]"
+
+        nr109 "Oh aku Diana"
+
+        mc "Salam kenal Diana"
+
+        nr109 "Ya"
+    elif ngobrol_r109 == 1:
+        $ ngobrol_r109 += 1
+        mc "Btw persiapan SNBT mu gimana aman kah?"
+
+        nr109 "aku full B ajalah, PU bisa tembus 700"
+
+        mc "Wow serius? kalo iya mantap sih"
+
+        nr109 "Ya"
+
+        "...."
+
+        "Nampaknya dia sedang tidak ingin bicara"
+
+        "Sebaiknya tidak aku ganggu lagi"
+    else:
+        "Aku tidak punya topik untuk dibicarakan"
 
     jump r109
 
@@ -2455,7 +2490,44 @@ label inspekLp2:
 label ngobrol_di_lp2:
     if ngobrolLp2 == 0:
         $ ngobrolLp2 += 1
-        nlp2 "Literasi BIindo nembak C udah"
+
+        mc "Aku mencoba ngajak ngobrol anak itu..."
+
+        mc "Halo mbak, mbaknya survey lokasi SNBT juga kah?"
+
+        unk "Iya"
+
+        mc "Oh berarti ngerjain di sini juga ya?"
+
+        unk "Iya"
+
+        mc "Sama nih, boleh kenalan ga?"
+
+        nlp2 "Aku Farah"
+
+        mc "Salam kenal Farah, aku [McName]"
+
+        nlp2 "Salam kenal juga [McName]"
+    elif ngobrolLp2 == 1:
+        $ ngobrolLp2 += 1
+
+        mc "Btw persiapan SNBT gimana aman kah?"
+
+        nlp2 "Literasi BIndo nembak C udah"
+
+        nlp2 "Dijamin nilainya gede"
+
+        mc "Oh berarti aman ya?"
+
+        nlp2 "..."
+
+        "Dia tidak menjawab"
+
+        "Mungkin anak ini agak introvert"
+
+        "Aku sebaiknya tidak mengganggunya"
+    else:
+        "Aku tidak punya topik lagi untuk kubicarakan"
 
     jump lp2
 
