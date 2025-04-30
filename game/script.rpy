@@ -11,9 +11,9 @@ define mmh = Character("Mas Mas hengker")
 define nbun = Character("Cynthia")
 define nr101 = Character("Elisa")
 define nr105 = Character("Andi")
-define nr109 = Character("Bagas")
+define nr109 = Character("Diana")
 define nlp2 = Character("Farah")
-define nkantin = Character("Diana")
+define nkantin = Character("Bagas")
 define nmasjid = Character("Gilang")
 define audio.c1 = "<loop 21.44>audio/Sun_Rays.wav"
 define satpam = Character("Satpam")
@@ -861,9 +861,106 @@ label diKantin:
             jump r109
     return
 
-# Unfinished
 label ngobrol_di_kantin:
-    "ngobrol kantin"
+    if ngobrolKantin == 0:
+        $ ngobrolKantin += 1
+
+        "Aku mencoba ngajak ngobrol anak itu"
+
+        mc "Permisi mas, masnya lagi survey lokasi SNBT kah"
+
+        show bagas netral
+
+        unk "Oh iya mas"
+
+        mc "Ohh sama nih mas lokasi SNBT ku juga di sini, kalo boleh tau masnya ambil jurusan mana mas?"
+
+        unk "lek bisa lolos sih aku ambil informatika ITS sini sih mas"
+
+        unk "Tapi nilai TO ku sek belum nyentuh passing grade blas e"
+
+        mc "Oalah gapapa mas semangat aja, dari pengalaman kakak kelasku yang lolos SNBT juga gitu"
+
+        mc "Nilainya waktu TO 500an terus"
+
+        mc "Tapi waktu di SNBT ternyata bisa tembus 700"
+
+        mc "Padahal ya mereka ngerjainnya sama aja kayak waktu ngerjain TO"
+
+        hide bagas netral
+        show bagas ketawa
+
+        unk "Owalah iyo ta mas? wes dadi semangat ngene seh aku, makasih yo mas"
+
+        mc "Okee, btw boleh kenalan ga? aku [McName]"
+
+        nkantin "Bolehh, aku Bagas mas"
+
+        mc "Oke salam kenal ya"
+
+        nkantin "Salam kenal juga mas"
+
+        hide bagas netral
+    elif ngobrolKantin == 1:
+        $ ngobrolKantin += 1
+
+        mc "Btw kalo bisa lolos mau ngapain aja mas"
+
+        show bagas netral
+
+        nkantin "Kalo bisa lolos seh aku pengen bikin game ya, game tipe tipe RPG gitu karena suka banget
+        aku sama game game kek gitu"
+
+        mc "Loh beneran mas? sama nih aku juga pengen bikin game RPG"
+
+        hide bagas netral
+        show bagas kaget
+
+        nkantin "Waduh...."
+
+        nkantin "Bikin sekarang ae mas wes daripada nunggu lolos malah ga bikin bikin"
+
+        hide bagas kaget
+        show bagas netral
+
+        mc "Ohh aku masih belum tau caranya haha, makanya nunggu lolos dulu"
+
+        hide bagas netral
+        show bagas ketawa
+
+        nkantin "Oalah gitu ta mas, yowes semangat lah ya"
+
+        mc "Sama-sama"
+
+        hide bagas ketawa
+    elif ngobrolKantin == 2:
+        $ ngobrolKantin += 1
+
+        mc "Oiya nilai tertinggimu di subtest apa, ada tips ga?"
+
+        show bagas netral
+
+        nkantin "Aku tertinggi di PPU seh mas, karena aku kan yo sering main game yang tipe problem solving
+        gitu jadine aku cepet buat ngerjain tipe tipe soal di PPU"
+
+        nkantin "Ya banyakin latihan soal aja seh mas ntar juga polane pasti ada seng sama"
+
+        nkantin "Kalopun waktune mepet yo aku selalu nembak E dan bisa dapet nilai sing bagus"
+
+        mc "Ohh jadi kunci nya banyakin latihan soal aja ya mas?"
+
+        nkantin "Betul"
+
+        mc "Wokeehh makasih mas"
+
+        hide bagas netral
+        show bagas ketawa
+
+        nkantin "Yoii"
+
+        hide bagas ketawa
+    else:
+        "Aku tidak tahu topik apalagi yang ingin kubicarakan"
 
     jump diKantin
 
