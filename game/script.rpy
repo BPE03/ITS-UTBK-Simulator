@@ -18,6 +18,7 @@ define nmasjid = Character("Gilang")
 define audio.c1 = "<loop 21.44>audio/Sun_Rays.wav"
 define satpam = Character("Satpam")
 
+default correctAnswer = 0
 default eksplor = 0
 default inspectedBundaran = 0
 default inspectedGedung1 = 0
@@ -91,7 +92,11 @@ label start:
 
     unk "Apapun alasanmu aku tidak akan berkomentar."
 
-    unk "Oh ya, FSM dari game ini dapat di lihat di gambar berikut"
+    unk "Oh ya, game ini dibuat oleh:"
+
+    unk "5025221169 - Bimantara Putra Ernandra\n5025221203 - Muhammad Choirun Ni'Am"
+
+    unk "FSM dari game ini dapat di lihat di gambar berikut"
 
     unk "...."
 
@@ -1208,7 +1213,7 @@ label inspekR109:
 
 # Unfinished
 label ngobrol_di_r109:
-    "ngobrol"
+    nr109 "PU nembak B udah"
 
     jump r109
 
@@ -1264,13 +1269,13 @@ label ngobrol_di_r106:
 
         mc "Permis mas, masnya survey lokasi SNBT juga kah?"
 
-        show andi netral
+        show andi ketawa
 
         unk "Yoww whatsapp my N****? yes aku habis survey lokasi buat SNBT ini"
 
         mc "Loh mas ini game edukasi mas jangan ngomong aneh aneh"
 
-        hide andi netral
+        hide andi ketawa
         show andi kaget
 
         unk "Hah maksud e?"
@@ -1295,13 +1300,16 @@ label ngobrol_di_r106:
         unk "Seriusan???"
 
         hide andi kaget
-        show andi netral
+        show andi ketawa
 
         unk "My boyy"
 
         unk "Good luck lah yak"
 
         mc "Okee sama-sama bang, btw boleh kenalan ga? kenalin aku [McName]"
+
+        hide andi ketawa
+        show andi netral
 
         nr106 "Oww [McName] kenalin aku Andi"
 
@@ -1367,11 +1375,17 @@ label ngobrol_di_r106:
 
         mc "Oh kamu ada channel youtube bang?"
 
+        hide andi netral
+        show andi ketawa
+
         nr106 "Yoii don't forget to like and subscribe to Jaequiin ya gaes ya"
 
         "Aku mencoba melihat akun youtubenya melalui hp ku..."
 
         mc "Wow 36k Subscriber? mantap banget sih ini bang"
+
+        hide andi ketawa
+        show andi netral
 
         nr106 "Yoii jangan lupa share ke temen temenmu juga ye bang bantuin adsense ku"
 
@@ -1391,9 +1405,12 @@ label ngobrol_di_r106:
 
         mc "Okee siap good luck ya!"
 
+        hide andi netral
+        show andi ketawa
+
         nr106 "Yoii"
 
-        hide andi netral
+        hide andi ketawa
     else:
         "Aku sudah tidak punya topik yang ingin kubicarakan"
 
@@ -2438,7 +2455,7 @@ label inspekLp2:
 label ngobrol_di_lp2:
     if ngobrolLp2 == 0:
         $ ngobrolLp2 += 1
-        "Ngoborl"
+        nlp2 "Literasi BIindo nembak C udah"
 
     jump lp2
 
@@ -2454,7 +2471,8 @@ label hariUTBK:
     "Alarm berbunyi nyaring..."
     scene kamar with fade
     mc "woahh... hari ini hari-H UTBK..."
-    mc "Untung kemarin aku udah survey jadi udah tau lokasinya"
+    if eksplor == 1:
+        mc "Untung kemarin aku udah survey jadi udah tau lokasinya"
     menu:
         "Bangun dan siap-siap":
             jump bangun
@@ -2515,17 +2533,171 @@ label masuk_ruangan:
     "Suasana terasa tegang namun penuh harapan."
     mc "Akhirnya... saatnya mengerjakan."
 
+    scene lp2 with fade
+    "Subtest 1: Penalaran Umum"
+
+    menu:
+        "j = 5\nonpf xfyz inyfrgfm xfyz fifqfm izf1 rfpf izf inyfrgfm izf fifqfm"
+        "tzozm":
+            "Apakah benar ini jawabannya?"
+        "erufy":
+            "Apakah benar ini jawabannya?"
+            $ correctAnswer += 1
+        "lnrfm":
+            "Apakah benar ini jawabannya?"
+        "sfyzz":
+            "Apakah benar ini jawabannya?"
+        "tnlff":
+            "Apakah benar ini jawabannya?"
+        
+    scene lp2 with fade
+    "Subtest 2: Pengetahuan & Pemahaman Umum"
+
+    show ppu
+
+    menu:
+        "Perumpamaan dalam teks tersebut terdapat pada kalimat ...."
+        "1":
+            "Apakah benar ini jawabannya?"
+        "3":
+            "Apakah benar ini jawabannya?"
+        "7":
+            "Apakah benar ini jawabannya?"
+        "6":
+            "Apakah benar ini jawabannya?"
+        "4":
+            "Apakah benar ini jawabannya?"
+            $ correctAnswer += 1
+
+    hide ppu
+
+    scene lp2 with fade
+    "Subtest 3: Kemampuan Memahami Bacaan & Menulis"
+
+    show kmbm
+
+    menu:
+        "Perumpamaan dalam teks tersebut terdapat pada kalimat ...."
+        "8":
+            "Apakah benar ini jawabannya?"
+            $ correctAnswer += 1
+        "7":
+            "Apakah benar ini jawabannya?"
+        "6":
+            "Apakah benar ini jawabannya?"
+        "5":
+            "Apakah benar ini jawabannya?"
+        "4":
+            "Apakah benar ini jawabannya?"
+    
+    hide kmbm
+
+    scene lp2 with fade
+    "Subtest 4: Pengetahuan Kuantitatif"
+
+    show pk
+
+    menu:
+        "Apa jawabannya?"
+        "SEMUA pilihan benar":
+            "Apakah benar ini jawabannya?"
+        "1, 2, dan 3 SAJA yang benar":
+            "Apakah benar ini jawabannya?"
+            $ correctAnswer += 1
+        "2 dan 4 SAJA yang benar":
+            "Apakah benar ini jawabannya?"
+        "HANYA 4 saja yang benar":
+            "Apakah benar ini jawabannya?"
+        "1 dan 3 SAJA yang benar":
+            "Apakah benar ini jawabannya?"
+
+    hide pk
+
+    scene lp2 with fade
+    "Subtest 5: Literasi Dalam Bahasa Indonesia"
+
+    show bindo
+
+    menu:
+        "Apa jawabannya?"
+        "A":
+            "Apakah benar ini jawabannya?"
+        "B":
+            "Apakah benar ini jawabannya?"
+        "C":
+            "Apakah benar ini jawabannya?"
+            $ correctAnswer += 1
+        "D":
+            "Apakah benar ini jawabannya?"
+        "E":
+            "Apakah benar ini jawabannya?"
+
+    hide bindo
+
+    scene lp2 with fade
+    "Subtest 6: Literasi Dalam Bahasa Inggris"
+
+    show bing
+
+    menu:
+        "What does the passage mainly talk about?"
+        "Controlling the habit of using fabric softener":
+            "Apakah benar ini jawabannya?"
+        "The popularity of fabric softener in the US":
+            "Apakah benar ini jawabannya?"
+        "Harmful compounds found in fabric softener":
+            "Apakah benar ini jawabannya?"
+        "The downside of fabric softener usage":
+            "Apakah benar ini jawabannya?"
+            $ correctAnswer += 1
+        "Environmental issues caused by fabric softener":
+            "Apakah benar ini jawabannya?"
+
+    hide bing
+
+    scene lp2 with fade
+    "Subtest 7: Penalaran Matematika"
+
+    show pm
+
+    menu:
+        "Apa Jawabannya?"
+        "950":
+            "Apakah benar ini jawabannya?"
+        "2.250":
+            "Apakah benar ini jawabannya?"
+        "1.300":
+            "Apakah benar ini jawabannya?"
+            $ correctAnswer += 1
+        "475":
+            "Apakah benar ini jawabannya?"
+        "825":
+            "Apakah benar ini jawabannya?"
+    
+    if correctAnswer < 0:
+        jump bad_ending
+    if correctAnswer > 1 and correctAnswer <= 7:
+        jump good_ending
+    if correctAnswer == 7 and eksplor == 1:
+        jump best_ending
+
 label bad_ending:
+    "Aku gagal lolos ke Informatika ITS"
+
     "Bad ending"
 
     return
 
 label good_ending:
+    "Aku lolos ke Informatika ITS"
+
     "Good ending"
 
     return
 
 label best_ending:
+    "Aku lolos ke Informatika ITS dengan nilai SNBT tertinggi"
+
     "Best ending"
 
     return
