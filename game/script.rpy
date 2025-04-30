@@ -1488,7 +1488,6 @@ label inspekR101:
 
     jump r101
 
-#unfinished
 label ngobrol_di_r101:
     if ngobrol_r101 == 0:
         $ ngobrol_r101 += 1
@@ -1718,9 +1717,144 @@ label inspekMasjid:
 
     jump masjid
 
-#Unfinished
 label ngobrol_di_masjid:
-    "Ngobrol di masjid"
+    if ngobrolMasjid == 0:
+        $ ngobrolMasjid += 1
+
+        "Aku mencoba mengajak ngobrol anak itu"
+
+        mc "Permisi mas, masnya survey lokasi SNBT kah?"
+
+        show gilang kaget
+
+        unk "Oh iya mas, ini saya barusan selesai jadi sekalian sholat dhuhur dulu sebelum balik"
+
+        mc "Eh sudah waktunya dhuhur ya? jujur ngga kedengeran adzan dari tadi"
+
+        hide gilang kaget
+        show gilang netral
+
+        unk "Iya mas kebetulan saya ngecek jam di hp saya udah waktunya dhuhur"
+
+        mc "Ohh oke oke, btw mau kuliah di ITS juga kah mas?"
+
+        unk "Oh nggak mas ini saya survey buat adik saya karena dia lupa belum survey, trus hari ini
+        juga dia ada acara jadi ngga bisa survey"
+
+        mc "Oalah begitu ya mas, berarti sekarang masnya udah kuliah?"
+
+        unk "Iya aku udah kuliah di Teknik Industri UB lewat SNBP"
+
+        mc "SNBP? wah nilai rata ratanya tinggi pasti ya mas"
+
+        unk "Ah ngga juga sih, cuma rata rata 90"
+
+        "...."
+
+        "90 ngga tinggi?"
+
+        "Orang pinter standarnya beda banget yak sama orang pas pasan kayak aku ini"
+
+        mc "Wih lumayan sih itu mas, ngga kaget pasti kalo diterima. BTW boleh kenalan ga? kenalin aku [McName]"
+
+        nmasjid "Boleh mas, aku Gilang"
+
+        mc "Salam kenal Gilang"
+
+        nmasjid "Salam kenal juga"
+
+        hide gilang netral
+    elif ngobrolMasjid == 1:
+        $ ngobrolMasjid += 1
+
+        mc "Btw masnya pernah nyoba try out SNBT gitu ga mas?"
+
+        show gilang netral
+
+        nmasjid "Pernah"
+
+        hide gilang netral
+        show gilang ketawa
+
+        nmasjid "Tapi ngga lolos passing grade"
+
+        hide gilang ketawa
+        show gilang netral
+
+        mc "Oh, mau ambil jurusan mana mas waktu SNBT, Tekdus juga kah?"
+
+        nmasjid "Ngga..."
+
+        hide gilang netral
+        show gilang ketawa
+
+        nmasjid "Aku waktu itu ngambilnya Kedokteran UI"
+
+        "Ehh.... pantes aja"
+
+        "Meskipun 600 atas pun masih belum lolos passing grade itu"
+
+        mc "Waduh langsung nyoba final boss ya mas, tapi kok sekarang kuliahnya di TekDus mas?"
+
+        hide gilang ketawa
+        show gilang netral
+
+        nmasjid "Karena desakan ortu aja"
+
+        nmasjid "Kebetulan ortu ku ada yang kerja di bagian industri"
+
+        nmasjid "Jadi aku ada sedikit-sedikit pengetahuan nanti"
+
+        mc "Oalah, ngga lolos passing grade itu berapa mas emangnya?"
+
+        nmasjid "Sekitar 630an kalo ga salah"
+
+        mc "Wuih gede juga sih itu, ada saran ga mas biar bisa dapet nilai segitu?"
+
+        nmasjid "Hmm... gimana ya, aku bagus di PBM sih nah kuncinya biar bisa cepet nyelesaiin soal PBM
+        itu nerapin konsep yang namanya skimming sama scanning, mungkin bisa cari tau aja contoh soal
+        yang skimming itu bagaimana dan scanning itu yang bagaimana"
+
+        nmasjid "Tapi kalo misal waktunya ngga sempet ya aku nembak A"
+
+        mc "Oh begitu ya mas, oke makasih"
+
+        nmasjid "Sama-sama mas"
+
+        hide gilang netral
+    elif ngobrolMasjid == 2:
+        $ ngobrolMasjid += 1
+
+        mc "Btw rencananya waktu kuliah gimana mas?"
+
+        show gilang kaget
+
+        nmasjid "Hmm......"
+
+        hide gilang kaget
+        show gilang ketawa
+
+        nmasjid "Belum tau sih mas, ngikut alur aja aku"
+
+        hide gilang ketawa
+        show gilang netral
+
+        mc "Waduh okedeh, kalo aku sih kan pengen masuk informatika ITS ya,
+        jadi nanti rencanaku bikin kayak game gitu"
+
+        hide gilang netral
+        show gilang kaget
+
+        nmasjid "Bikin game? wih aku juga seneng main game nih mas, ntar kalo udah bikin infoin yak"
+
+        hide gilang kaget
+        show gilang netral
+
+        mc "Amiin makasih mas"
+
+        hide gilang kaget
+    else:
+        "Aku sudah tidak tahu topik apalagi yang ingin kubicarakan"
 
     jump masjid
 
@@ -2178,6 +2312,7 @@ label hariUTBK:
     with fade
     $ renpy.pause(1.0, hard=True)
     stop music
+    $ renpy.music.set_volume(1.0, delay=0, channel='music')
     "Kring....."
     "Alarm berbunyi nyaring..."
     scene kamar with fade
