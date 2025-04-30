@@ -9,10 +9,10 @@ define bpk = Character("Bapak Bapak TU")
 define bpka = Character("Bapak Bapak Aula")
 define mmh = Character("Mas Mas hengker")
 define nbun = Character("Cynthia")
-define nr101 = Character("Farah")
+define nr101 = Character("Elisa")
 define nr105 = Character("Andi")
 define nr109 = Character("Bagas")
-define nlp2 = Character("Elisa")
+define nlp2 = Character("Farah")
 define nkantin = Character("Diana")
 define nmasjid = Character("Gilang")
 define audio.c1 = "<loop 21.44>audio/Sun_Rays.wav"
@@ -1393,7 +1393,167 @@ label inspekR101:
 
 #unfinished
 label ngobrol_di_r101:
-    "Ngobrol"
+    if ngobrol_r101 == 0:
+        $ ngobrol_r101 += 1
+
+        "Aku mencoba menghampiri anak itu"
+
+        show elisa netral1
+
+        "...."
+
+        "Dia nampaknya sedang duduk melamun sambil melihati ruangan-ruangan yang ada di lantai atas"
+
+        "Aku akhirnya memberanikan diri untuk membuka topik"
+
+        mc "Permisi mbak, mbaknya survey lokasi SNBT juga kah?"
+
+        hide elisa netral1
+        show elisa netral2
+
+        unk "Oh iyaa, aku barusan selesai nih"
+
+        mc "Ohh mbaknya mau kuliah di ITS kah kok lokasi SNBT nya di ITS juga?"
+
+        unk "Iyaa kebetulan rumahku deket sini jadi sekalian tes di sini jugaa"
+
+        mc "Ohh i see... kalo boleh tahu mau ambil jurusan mana mbak?"
+
+        unk "Aku ambil jurusan informatikaa, karena dari aku kecil udah suka banget sama yang namanya ngoding"
+
+        "...."
+
+        "Dari kecil?"
+
+        "Bahkan lingkunganku pun tidak pernah sekalipun menyebutkan istilah ngoding"
+
+        mc "Wuihh keren... aku juga pengen ambil informatika juga nih"
+
+        hide elisa netral2
+        show elisa ketawa
+
+        unk "Wahh bisa sama yaa, semoga bisa keterima yaa!"
+
+        mc "Kamu juga. BTW boleh kenalan ga? kenalin aku [McName]"
+
+        hide elisa ketawa
+        show elisa netral2
+
+        nr101 "Bolehh, halo [McName] kenalin aku Elisa"
+
+        mc "Elisa... salam kenal ya"
+
+        nr101 "Salam kenal juga!"
+    elif ngobrol_r101 == 1:
+        $ ngobrol_r101 += 1
+
+        show elisa netral1
+
+        mc "Ngomong-ngomong Lis, persiapan SNBT mu gimana aman kah?"
+
+        hide elisa netral1
+        show elisa netral2
+
+        nr101 "Dari aku semoga aman ya, karena nilai TO ku udah bisa di atas passing grade walaupun agak mepet"
+
+        mc "Wihh... udah pasti aman sih itu, kalau kata kakak kelasku yang lolos sih nilai SNBT nya selalu di
+        atas nilai try out juga"
+
+        mc "Bahkan yang waktu try out nilainya 500 terus, waktu SNBT nilainya bisa 700"
+
+        show elisa ketawa
+
+        nr101 "Wihh... sejauh itu naiknya? kalo gitu ngga perlu khawatir deh"
+
+        hide elisa ketawa
+        show elisa netral2
+
+        mc "Iya semoga aman aja sih, btw nilai subtest tertinggi mu di subtest apa?"
+
+        nr101 "Oh kalo aku tertinggi di Penalaran Matematika, karena aku sering ngerjain tugas ngoding
+        jadi banyak tipe soal yang familiar di sini"
+
+        hide elisa netral2
+        show elisa ketawa
+
+        nr101 "Jadi aku ngga perlu belajar banyak banyak ehe"
+
+        "...."
+
+        "Apakah ada korelasinya orang pintar sama suka matematika?"
+
+        "Kenapa kebanyakan orang pintar yang kutemui selalu suka dengan matematika?"
+
+        mc "Owhh menarik banget sih itu... ada tips ga buat bisa ningkatin nilai PM ku?"
+
+        hide elisa ketawa
+        show elisa netral1
+
+        nr101 "Hmmm...."
+
+        ".....?"
+
+        hide elisa netral1
+        show elisa netral2
+
+        nr101 "Jujurly aku kurang tau ya gimana, karena aku sering ngerjain soal soal jadi mungkin dari aku
+        banyakin latihan soal aja sihh"
+
+        nr101 "Tapi terkadang kalo emang waktunya ngga sempet aku selalu nembak C"
+
+        nr101 "Nilaiku masih selalu aman meskipun ada yang nembak"
+
+        mc "Ohh... begitu ya, oke makasih sarannya"
+
+        hide elisa netral2
+        show elisa ketawa
+
+        nr101 "You're welcome~"
+
+        hide elisa ketawa
+    elif ngobrol_r101 == 2:
+        $ ngobrol_r101 += 1
+
+        show elisa netral1
+
+        mc "Ngomong-ngomong Lis, kalo udah keterima nanti rencanamu mau ngapain aja?"
+
+        nr101 "Hmm....."
+
+        "...?"
+
+        hide elisa netral1
+        show elisa netral2
+
+        nr101 "Rencanaku sih pengen banyak banyakin ikut lomba sihh, sekalian ngasah logika sama skill
+        ngodingku gitu. Nanti kalo menang kan bisa dapet cuan juga jadi win-win situation for me"
+
+        mc "Ohh i see, rencanamu keren banget yak nanti bisa membanggakan nama almamater juga"
+
+        mc "Kalo aku sih ya cuma pengen mbuat game aja sih, selain itu masih belum kepikiran"
+
+        nr101 "Ohh bikin game? aku denger denger itu bikinnya susah banget lohh, kalo kamu bisa
+        keren abiss sih..."
+
+        mc "Iya karena aku suka banget main game apalagi yang punya Story sama Karakter yang bagus"
+
+        mc "Tapi rasanya genre game seperti itu masih berasa nggak banyak orang yang tau"
+
+        mc "Padahal game kayak gitu bisa punya nilai edukatif dan nilai seni loh"
+
+        mc "Makanya aku pengen bikin game yang punya nilai edukatif dan gimana caranya biar semua orang
+        itu bisa ngerasa senang mainin gameku"
+
+        hide elisa netral2
+        show elisa ketawa
+
+        nr101 "Kerennn.... semangat ya!"
+
+        mc "Sama-sama lis"
+
+        hide elisa ketawa
+    else:
+        "Aku sudah kehabisan topik yang ingin kubicarakan"
     jump r101
 
 label masjid:
@@ -1851,16 +2011,66 @@ label lp2:
             "Aku keluar dari ruangan..."
             jump lt3
 
-#unfinished
 label inspekLp2:
     if inspectedLp2 == 0:
+        $ inspectedLp2 += 1
+
         "Aku melihat-lihat sekelilingku...."
+
+        "Laboratorium pemrograman...."
+
+        "Sudah pasti hanya ada komputer di sini"
+
+        "Maksudku tidak mungkin mereka membuat program dengan cara menulis di kertas kan?"
+
+        "Aku mencoba menyalakan salah satu komputernya..."
+
+        "...."
+
+        "Tidak ada respon?"
+
+        "Apakah ada mekanisme tersendiri supaya komputer ini tidak dinyalakan oleh sembarangan orang?"
+    elif inspectedLp2 == 1:
+        $ inspectedLp2 += 1
+
+        "Aku mencoba menyalakannya lagi..."
+
+        "...."
+
+        "Masih tidak ada tanda kehidupan"
+
+        "Mungkin memang ada mekanisme sendiri supaya dapat menyala?"
+    elif inspectedLp2 == 2:
+        $ inspectedLp2 += 1
+
+        "Aku mencoba menyalakannya lagi, kali ini aku coba menekan lebih keras pada tombol powernya"
+
+        "...."
+
+        "Oh indikator lampunya sudah menyala"
+
+        "Sudah berapa kali komputer ini digunakan sehingga tombol powernya sulit ditekan?"
+
+        "Sebagai ritual tersendiri terhadap komputer yang aku temui, aku mencoba membuka task manager untuk
+        melihat spesifikasinya"
+
+        "Intel I7 12th gen....."
+
+        "Sudah kuduga kalau komputer pemrograman seharusnya menggunakan processor yang cepat"
+
+        "Dengan processor seperti ini, aku tidak perlu khawatir waktuku habis menunggu komputer yang tidak merespon"
+
+        "Aku pun mematikan kembali komputer tersebut"
+    else:
+        "Sudah tidak ada lagi yang bisa aku lihat"
 
     jump lp2
 
 #Unfinished
 label ngobrol_di_lp2:
-    "Ngobrol"
+    if ngobrolLp2 == 0:
+        $ ngobrolLp2 += 1
+        "Ngoborl"
 
     jump lp2
 
