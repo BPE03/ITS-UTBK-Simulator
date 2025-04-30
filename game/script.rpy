@@ -11,9 +11,9 @@ define mmh = Character("Mas Mas hengker")
 define nbun = Character("Cynthia")
 define nr101 = Character("Farah")
 define nr105 = Character("Andi")
-define nr109 = Character("Billy")
+define nr109 = Character("Bagas")
 define nlp2 = Character("Elisa")
-define nkantin = Character("Danan")
+define nkantin = Character("Diana")
 define nmasjid = Character("Gilang")
 define audio.c1 = "<loop 21.44>audio/Sun_Rays.wav"
 define satpam = Character("Satpam")
@@ -22,6 +22,7 @@ default eksplor = 0
 default inspectedBundaran = 0
 default inspectedGedung1 = 0
 default inspectedGedung2 = 0
+default inspectedLp2 = 0
 default ngobrolBundaran = 0
 default ngobrolKantin = 0
 default ngobrolMasjid = 0
@@ -70,7 +71,7 @@ label start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    show eileen happy
+    show unknown
 
     # These display lines of dialogue.
 
@@ -112,7 +113,7 @@ label start:
 
     unk "Ingatlah kunci agar lulus SNBT itu adalah......."
 
-    hide eileen happy
+    hide unknown
 
     jump prologue
 
@@ -376,7 +377,11 @@ label diBundaranITS:
 
                         mc "Eh Cyn aku pergi duluan yak, lokasi SNBT ku di Teknik Informatika soalnya"
 
+                        show cynthia ketawa
+
                         nbun "Okeeyy hati-hati ya!"
+
+                        hide cynthia netral
 
                     jump diDepanTC
 
@@ -481,15 +486,23 @@ label ngobrol_di_bundaran:
 
         mc "Kampusnya keren ya mbak?"
 
+        show cynthia netral
+
         unk "...."
 
         "Ah ga dijawab lagi, apa aku salah mulainya ya?"
 
         mc "halo mbak?"
 
+        hide cynthia netral
+        show cynthia kaget
+
         unk "Eh iya mas, ada apa ya?"
 
         mc "Oh ngga tadi aku liat mbaknya lagi foto-foto kampusnya tadi, pengen kuliah di sini kah mbak?"
+
+        hide cynthia kaget
+        show cynthia netral
 
         unk "Iya mas, sekalian survey lokasi SNBT juga"
 
@@ -502,7 +515,13 @@ label ngobrol_di_bundaran:
         mc "Aku sih ngambil Teknik Informatika di pilihan pertamanya, pilihan keduanya jujur ngga tau haha,
         tapi yang mirip mirip sih di Sistem Informasi jadi itu pilihan kedua ku."
 
+        hide cynthia netral
+        show cynthia kaget
+
         unk "Wihh kerenn..... yakin lolos mas? itu keduanya passing-gradenya tinggi banget loh"
+
+        hide cynthia kaget
+        show cynthia netral
 
         mc "Harus yakin dong, kalo ga yakin gimana bisa lolos kalo mentalnya down duluan? dari SD sampe SMA
         aku selalu percaya diri meskipun masih ada materi yang belum aku bener bener pahami."
@@ -515,9 +534,15 @@ label ngobrol_di_bundaran:
 
         "Emang aku bisa lolos di jurusan dengan peminat terbanyak hanya ngandelin beruntung doang?"
 
+        hide cynthia netral
+        show cynthia ketawa
+
         unk "Wih bener banget sih itu, semoga lolos ya mas"
 
         mc "Amiin kamu juga ya. BTW boleh kenalan ga?"
+
+        hide cynthia ketawa
+        show cynthia netral
 
         nbun "Boleh mas, kenalin aku Cynthia"
 
@@ -525,11 +550,15 @@ label ngobrol_di_bundaran:
 
         nbun "Salam kenal juga"
 
+        hide cynthia netral
+
     elif ngobrolBundaran == 1:
 
         $ ngobrolBundaran += 1
 
         mc "BTW Cynthia, persiapan SNBT mu gimana aman ga?"
+
+        show cynthia netral
 
         nbun "Alhamdulillah liat hasil Try-Out ku yang selalu di atas passing grade, aku optimis sih
         bisa lolos. Kalo kamu gimana?"
@@ -539,12 +568,18 @@ label ngobrol_di_bundaran:
 
         nbun "uang koin berapa mas? 100? 200?"
 
+        hide cynthia netral
+        show cynthia ketawa
+
         "Buset dia ketawa lagi."
 
         "Jadi malu aku, hasil TO nya dia dah aman banget, lah aku hasil pas pasan gini malah sok ngasih
         kata kata motivasi"
 
         mc "Kalo nilaiku segitu udah aku buang jauh jauh sih koin sama harapanku"
+
+        hide cynthia ketawa
+        show cynthia netral
 
         nbun "ahaha bercanda aja mas, omong-omong soal mana mas yang kesulitan? barangkali bisa aku bantu"
 
@@ -565,12 +600,16 @@ label ngobrol_di_bundaran:
 
         mc "Hmmmm i see... makasih buat tipsnya yak"
 
-        nbun "Sama-sama mas"
+        nbun "Sama-samaa~"
+
+        hide cynthia netral
 
     elif ngobrolBundaran == 2:
         $ ngobrolBundaran += 1
 
         mc "Btw kalo misal kamu ga lolos SNBT gimana Cyn?"
+
+        show cynthia kaget
 
         nbun "Loh kok tanya gitu, katanya tadi harus yakin?"
 
@@ -578,6 +617,9 @@ label ngobrol_di_bundaran:
         aku juga bingung kalo ngga lolos nanti harus gimana lagi"
 
         mc "Mandiri? darimana duitnya, gap year? ya mungkin pilihan terbaikku buat belajar lebih banyak lagi"
+
+        hide cynthia kaget
+        show cynthia netral
 
         nbun "mmmm...."
 
@@ -599,12 +641,19 @@ label ngobrol_di_bundaran:
 
         mc "Iya juga ya haha, makasih motivasinya yak"
 
+        hide cynthia netral
+        show cynthia ketawa
+
         nbun "Okeyy~"
+
+        hide cynthia ketawa
 
     elif ngobrolBundaran == 3:
         $ ngobrolBundaran += 1
 
         mc "Btw kalo udah lolos ITS nanti rencananya mau ngapain aja?"
+
+        show cynthia netral
 
         nbun "Belum tau sih mas, yang pasti aku pengen nyoba ikut riset kalo ada, 
         atau pengen nyoba teoriku yang lagi aku kembangin yaitu bikin alat untuk ngobatin kanker"
@@ -616,7 +665,7 @@ label ngobrol_di_bundaran:
         mc "Kamu udah bikin penelitian sendiri?"
 
         nbun "Iya, tapi karena ngga ada fasilitasnya jadi aku ngga bisa nyoba, makanya aku pengen banget
-        buat lolos ke jurusan ini"
+        buat masuk ke jurusan ini"
 
         "Ya aku hanya berharap kamu tidak ada di pesawat aja"
 
@@ -628,7 +677,13 @@ label ngobrol_di_bundaran:
 
         mc "Waduh oke deh, jadi rencanaku setelah masuk ke Informatika itu ya pengen nyoba bikin game gitu"
 
+        hide cynthia netral
+        show cynthia kaget
+
         nbun "Oh masnya suka main game kah?"
+
+        hide cynthia kaget
+        show cynthia netral
 
         mc "Iya karena aku suka main game, aku jadi mikir kok bisa ya orang orang bikin game kayak gini. 
         Apalagi ada 1 game yang bener bener bikin perspektif ku ke game itu berbeda banget"
@@ -656,12 +711,17 @@ label ngobrol_di_bundaran:
         mc "Maka dari itulah aku ingin membuat game yang bisa diakses untuk semua umur, menyenangkan,
         dan pastinya mengedukasi mereka."
 
+        hide cynthia netral
+        show cynthia ketawa
+
         nbun "Jujur aku ngga tau apa apa tentang game mas, tapi apapun rencana masnya semoga bisa kecapai ya"
 
         mc "Kamu juga Cyn."
 
+        hide cynthia ketawa
+
     else:
-        mc "Aku tidak tau topik apalagi yang ingin kubicarakan"
+        mc "Aku tidak tahu topik apalagi yang ingin kubicarakan"
 
     jump diBundaranITS
 
@@ -1172,7 +1232,7 @@ label diGedung2:
         "Maju kanan" if not places_discovered["r101"]:
             "Aku pergi ke arah kanan depan..."
             jump r101
-        "Ke lorong Ruang 106-108" if places_discovered["r101"]:
+        "Ke lorong Ruang 101-105" if places_discovered["r101"]:
             "Aku pergi ke lorong ruang 101-105..."
             jump r101
         "Keluar":
@@ -1375,9 +1435,29 @@ label masjid:
         "Keluar":
             jump r101
 
-#Unfinished
 label inspekMasjid:
-    "Inspek masjid"
+    "Musholla ini terlihat seperti musholla pada umumnya..."
+
+    "Ada 3 shaf, dan ada tempat sendiri di paling depan untuk seorang imam."
+
+    "Aku lihat di sebelah kanan imam juga ada semacam meja untuk mengaji"
+
+    "Apakah di sini sering ada acara pengajian juga?"
+
+    scene musholla dalam 2
+    with fade
+
+    "Di dekat pintu masuk ada banyak sekali laci yang aku tidak tahu apa isinya"
+
+    "Tidak lupa dengan adanya kotak infaq juga"
+
+    scene musholla wudhu
+
+    "Dan jika aku keluar, di sebelah kanan dari musholla ini adalah tempat wudhunya"
+
+    "Terlihat ada 6 keran untuk berwudhu, dan ada kolam ikan juga?"
+
+    "Woh bisa ngasih minum ikannya nih kalo mereka haus"
 
     jump masjid
 
@@ -1464,9 +1544,13 @@ label lt2:
         "Apa yang harus aku lakukan di sini?"
         "Inspek":
             jump inspekLt2
-        "Maju Kiri":
+        "Maju Kiri" if not places_discovered["tu"]:
             jump keTU
-        "Maju Kanan":
+        "Ke lorong TU" if places_discovered["tu"]:
+            jump keTU
+        "Maju Kanan" if not places_discovered["aula"]:
+            jump keAula
+        "Ke lorong Aula" if places_discovered["aula"]:
             jump keAula
         "Naik Tangga":
             scene tangga_naik
@@ -1477,9 +1561,31 @@ label lt2:
             "Aku menuruni tangga..."
             jump diGedung1
 
-#Unfinished
 label inspekLt2:
-    "Inspek"
+    "Tidak banyak yang bisa kulihat di sini..."
+
+    "Selain mading itu, ada juga peta lokasi yang terletak di dinding"
+
+    "Peta tersebut hanya menunjukkan kode kode kelas"
+
+    "..."
+
+    "Aku tidak menemukan ruang LP2"
+
+    "Apakah ini peta lama atau memang LP2 punya kode sendiri?"
+
+    "Kemudian aku mencoba melihat sekelilingku lagi"
+
+    scene microsoft
+    with fade
+
+    "...."
+
+    "Ada ruang microsoft?"
+
+    "Di sini tertulis mobility lab, aku tidak tahu apa maksudnya"
+
+    "Apakah di sini lab untuk mengembangkan aplikasi mobile?"
 
     jump lt2
 
@@ -1613,19 +1719,29 @@ label lt3:
         "Apa yang harus aku lakukan di sini?"
         "Inspek":
             jump inspekLt3
-        "Maju Kiri":
+        "Maju Kiri" if not places_discovered["lp2"]:
             "Aku bergerak ke arah depan kiri..."
             jump lp2
-        "Maju Kanan":
+        "ke LP2" if places_discovered["lp2"]:
+            "Aku masuk ke LP2..."
+            jump lp2
+        "Maju Kanan" if not places_discovered["laboratorium_giga"]:
+            jump labgiga
+        "Ke lorong lab IGS" if places_discovered["laboratorium_giga"]:
             jump labgiga
         "Turun tangga":
             scene tangga_turun
             "Aku menuruni tangga...."
             jump lt2
 
-#Unfinished
 label inspekLt3:
-    "Inspek"
+    "Tidak banyak yang bisa ku lihat di sini"
+
+    "Selain dari tempat belajar yang layaknya salon mewah, ada meja besar yang tersandar di sebelah toilet"
+
+    "Meja apa itu kira-kira? dari ukurannya sih menurutku seperti meja untuk olahraga Tenis Meja"
+
+    "Jika warga di sini menyimpan meja tenis di sini, apakah di sini sering ada ajang tenis meja?"
 
     jump lt3
 
@@ -1645,7 +1761,7 @@ label labgiga:
 
         show mas mas hengker
 
-        mmh "Maaf mas di Aula lagi ada shooting film mahasiswa henger, dimohon masnya
+        mmh "Maaf mas di lorong ini lagi ada shooting film mahasiswa henger, dimohon masnya
         tidak lewat lorong sebelah sini ya"
 
         mc "Oh iya mas"
@@ -1675,7 +1791,6 @@ label labgiga:
         "Aku tidak bisa melewati lorong ini"
     jump lt3
 
-#unfinished
 label lp2:
     if not places_discovered["lp2"]:
         $ places_discovered["lp2"] = True
@@ -1738,7 +1853,8 @@ label lp2:
 
 #unfinished
 label inspekLp2:
-    "Inspek"
+    if inspectedLp2 == 0:
+        "Aku melihat-lihat sekelilingku...."
 
     jump lp2
 
@@ -1750,7 +1866,11 @@ label ngobrol_di_lp2:
 
 # Unfinished
 label hariUTBK:
+    $ renpy.music.set_volume(0.0, delay=1, channel='music')
     scene black
+    with fade
+    $ renpy.pause(1.0, hard=True)
+    stop music
     "Kring....."
     "Alarm berbunyi nyaring..."
     scene kamar with fade
@@ -1810,8 +1930,23 @@ label tiba_tc:
             # Di sini bisa ada konsekuensi jika MC mencoba menyembunyikan barang terlarang
             jump masuk_ruangan # Untuk sementara kita langsung masuk ruangan
 
-    label masuk_ruangan:
-        scene lp2 with fade
-        "Kamu memasuki ruangan ujian."
-        "Suasana terasa tegang namun penuh harapan."
-        mc "Akhirnya... saatnya mengerjakan."
+label masuk_ruangan:
+    scene lp2 with fade
+    "Kamu memasuki ruangan ujian."
+    "Suasana terasa tegang namun penuh harapan."
+    mc "Akhirnya... saatnya mengerjakan."
+
+label bad_ending:
+    "Bad ending"
+
+    return
+
+label good_ending:
+    "Good ending"
+
+    return
+
+label best_ending:
+    "Best ending"
+
+    return
